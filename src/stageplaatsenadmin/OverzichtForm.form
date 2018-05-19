@@ -162,14 +162,16 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jSeparator1" min="-2" pref="13" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelGUIAanmaakdatum" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelAanmaakdatum" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelGUILaatsteWijziging" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabellaatsteWijzing" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="jLabelGUIID" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabelGUIAanmaakdatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelAanmaakdatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelGUILaatsteWijziging" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabellaatsteWijzing" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="18" max="32767" attributes="0"/>

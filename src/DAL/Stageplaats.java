@@ -21,6 +21,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -50,7 +51,8 @@ public class Stageplaats implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "myseq", sequenceName = "MySEQ", allocationSize = 1, initialValue = 2)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator="myseq")
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
@@ -87,6 +89,15 @@ public class Stageplaats implements Serializable {
     private List<StudentStageplaats> studentStageplaatsList;
 
     public Stageplaats() {
+      this.titel = "Naamloos";
+      this.omschrijving = "Geen Omschrijving";
+      this.aantalPlaatsen = 1;
+      this.periode = "Onbekend";
+      this.begeleiding = "Onbekend";
+      this.extraKennisVereist = "Onbekend";
+      this.voorzieningen = "Onbekend";
+      
+    //  this.id = 0;
     }
 
     public Stageplaats(Integer id) {
@@ -98,6 +109,9 @@ public class Stageplaats implements Serializable {
         this.titel = titel;
         this.aanmaakDatum = aanmaakDatum;
         this.laatsteWijziging = laatsteWijziging;
+        this.extraKennisVereist = "Onbekend";
+        this.voorzieningen = "Onbekend";
+        
     }
 
     public Integer getId() {

@@ -57,7 +57,33 @@ public class DBFacade {
 
     }
     
+    public List<Situeert> getAllSitueertOfSpecialisatieID(int id){
+        Query situeertBySpecialisatieIDQuery = em.createNamedQuery("Situeert.findBySpecialisatieID");
+        situeertBySpecialisatieIDQuery.setParameter("id", id);
+        List<Situeert> resultList = situeertBySpecialisatieIDQuery.getResultList();
+        return resultList;
+    }
     
+    public void persist(Stageplaats stageplaats){
+        em.getTransaction( ).begin( );
+        em.persist(stageplaats);
+        em.getTransaction().commit();
+    }
+    
+    public Bedrijf getBedrijfByID(int id){
+        // Bedrijf.findById
+        Query bedrijfByIDQuery = em.createNamedQuery("Bedrijf.findById");
+        bedrijfByIDQuery.setParameter("id", id);
+        Bedrijf b = (Bedrijf)bedrijfByIDQuery.getSingleResult();
+        return b;
+        
+    }
+    
+    public void removeStageplaats(Stageplaats stageplaats){
+        em.getTransaction( ).begin( );
+        em.remove(stageplaats);
+        em.getTransaction().commit();
+    }
     
     
     

@@ -9,7 +9,10 @@ import DAL.DBFacade;
 import DAL.Situeert;
 import DAL.Specialisatie;
 import DAL.Stageplaats;
+import DAL.StudentStageplaats;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
@@ -354,14 +357,15 @@ public class OverzichtForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelGUIAanmaakdatum)
-                            .addComponent(jLabelAanmaakdatum)
-                            .addComponent(jLabelGUILaatsteWijziging)
-                            .addComponent(jLabellaatsteWijzing)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabelGUIID)
-                                .addComponent(jLabelID)))
+                                .addComponent(jLabelID))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelGUIAanmaakdatum)
+                                .addComponent(jLabelAanmaakdatum)
+                                .addComponent(jLabelGUILaatsteWijziging)
+                                .addComponent(jLabellaatsteWijzing)))
                         .addContainerGap(18, Short.MAX_VALUE))))
         );
 
@@ -384,18 +388,48 @@ public class OverzichtForm extends javax.swing.JFrame {
 
     private void jComboBoxSpecialisatieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSpecialisatieActionPerformed
         // TODO add your handling code here:
+        this.SpecialisatieSitueert = this.dbFacade.getAllSitueertOfSpecialisatieID(((Specialisatie)this.jComboBoxSpecialisatie.getSelectedItem()).getId());
+            //    this.geselecteerdeStageplaats.getSitueertID().getSpecialisatieID().getId());
+        this.jComboBoxSitueert.setModel(new DefaultComboBoxModel(this.SpecialisatieSitueert.toArray()));
     }//GEN-LAST:event_jComboBoxSpecialisatieActionPerformed
 
     private void jButtonSaveStageplaatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveStageplaatsActionPerformed
         // TODO add your handling code here:
+        
+        storeDisplayedStageplaats();
+        this.geselecteerdeStageplaats.setLaatsteWijziging(new Date());
+        this.dbFacade.persist((this.geselecteerdeStageplaats));
+        refreshDataCache();
+        refreshListbox();
     }//GEN-LAST:event_jButtonSaveStageplaatsActionPerformed
 
     private void jButtonNewStageplaatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewStageplaatsActionPerformed
         // TODO add your handling code here:
+        
+        this.geselecteerdeStageplaats = new Stageplaats();
+        this.geselecteerdeStageplaats.setSitueertID((Situeert)this.jComboBoxSitueert.getSelectedItem());
+        this.geselecteerdeStageplaats.getSitueertID().setSpecialisatieID((Specialisatie)this.jComboBoxSpecialisatie.getSelectedItem());
+        this.geselecteerdeStageplaats.setBedrijfID(this.dbFacade.getBedrijfByID(1));
+        this.geselecteerdeStageplaats.setAanmaakDatum(new Date());
+        this.geselecteerdeStageplaats.setLaatsteWijziging(new Date());
+        this.geselecteerdeStageplaats.setStudentStageplaatsList(new ArrayList<StudentStageplaats>());
+        refreshDataCache();
+        refreshDisplayedStageplaats();
+        
     }//GEN-LAST:event_jButtonNewStageplaatsActionPerformed
 
     private void jButtonDeleteStageplaatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteStageplaatsActionPerformed
         // TODO add your handling code here:
+        
+        Stageplaats s = (Stageplaats)jListStageplaatsen.getSelectedValue();
+        int index = this.jListStageplaatsen.getSelectedIndex();
+        this.dbFacade.removeStageplaats((s));
+        refreshDataCache();
+        refreshListbox();
+        if (index > 0) index--;
+        this.jListStageplaatsen.setSelectedIndex(index);
+        
+        
     }//GEN-LAST:event_jButtonDeleteStageplaatsActionPerformed
 
     private void loadStaticData(){
@@ -416,7 +450,9 @@ public class OverzichtForm extends javax.swing.JFrame {
     
     private void refreshDisplayedStageplaats(){
         if (this.geselecteerdeStageplaats != null){
-            this.jLabelID.setText(this.geselecteerdeStageplaats.getId().toString());
+            if (this.geselecteerdeStageplaats.getId() != null){
+                this.jLabelID.setText(this.geselecteerdeStageplaats.getId().toString());
+            }
             this.jTextFieldTitel.setText(this.geselecteerdeStageplaats.getTitel());
             this.jTextAreaOmschrijving.setText(this.geselecteerdeStageplaats.getOmschrijving());
             this.jSliderAantalPlaatsen.setValue(this.geselecteerdeStageplaats.getAantalPlaatsen());
@@ -426,12 +462,43 @@ public class OverzichtForm extends javax.swing.JFrame {
             this.jTextAreaVoorzieningen.setText(this.geselecteerdeStageplaats.getVoorzieningen());
             this.jTextFieldBedrijfsnaam.setText(this.geselecteerdeStageplaats.getBedrijfID().getNaam());
             this.jComboBoxSpecialisatie.setSelectedItem(this.geselecteerdeStageplaats.getSitueertID().getSpecialisatieID());
+            this.SpecialisatieSitueert = this.dbFacade.getAllSitueertOfSpecialisatieID(this.geselecteerdeStageplaats.getSitueertID().getSpecialisatieID().getId());
+            this.jComboBoxSitueert.setModel(new DefaultComboBoxModel(this.SpecialisatieSitueert.toArray()));
+            
             this.jComboBoxSitueert.setSelectedItem(this.geselecteerdeStageplaats.getSitueertID());
             
             SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy '-' HH:mm:ss");
             this.jLabelAanmaakdatum.setText(dateformat.format(this.geselecteerdeStageplaats.getAanmaakDatum()));
             this.jLabellaatsteWijzing.setText(dateformat.format(this.geselecteerdeStageplaats.getLaatsteWijziging()));
         }
+    }
+    // TODO make inverse method (from refreshDisplayedStageplaats) 
+    // (fields to Stageplaatsobject.
+    
+    private void storeDisplayedStageplaats(){
+        if (this.geselecteerdeStageplaats == null){
+            this.geselecteerdeStageplaats = new Stageplaats();
+        }
+        
+        this.geselecteerdeStageplaats.setTitel(this.jTextFieldTitel.getText());
+        this.geselecteerdeStageplaats.setOmschrijving(this.jTextAreaOmschrijving.getText());
+        this.geselecteerdeStageplaats.setAantalPlaatsen(this.jSliderAantalPlaatsen.getValue());
+        this.geselecteerdeStageplaats.setPeriode(this.jTextFieldPeriode.getText());
+        this.geselecteerdeStageplaats.setBegeleiding(this.jTextAreaBegeleiding.getText());
+        this.geselecteerdeStageplaats.setExtraKennisVereist(this.jTextAreaVereisteKennis.getText());
+        this.geselecteerdeStageplaats.setVoorzieningen(this.jTextAreaVoorzieningen.getText());
+        this.geselecteerdeStageplaats.setSitueertID((Situeert)this.jComboBoxSitueert.getSelectedItem());
+        this.geselecteerdeStageplaats.getSitueertID().setSpecialisatieID((Specialisatie)this.jComboBoxSpecialisatie.getSelectedItem());
+            
+        
+            
+        //    this.jTextFieldBedrijfsnaam.setText(this.geselecteerdeStageplaats.getBedrijfID().getNaam());
+
+            
+         //   SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy '-' HH:mm:ss");
+         //   this.jLabelAanmaakdatum.setText(dateformat.format(this.geselecteerdeStageplaats.getAanmaakDatum()));
+         //   this.jLabellaatsteWijzing.setText(dateformat.format(this.geselecteerdeStageplaats.getLaatsteWijziging()));
+
     }
     
     
