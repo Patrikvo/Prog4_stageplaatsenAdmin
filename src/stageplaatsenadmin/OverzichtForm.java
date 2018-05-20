@@ -379,7 +379,9 @@ public class OverzichtForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jListStageplaatsenValueChanged
 
     private void jButtonChangeBedrijfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChangeBedrijfActionPerformed
+        BedrijfForm bf = new BedrijfForm();
         
+        bf.setVisible(true);
 
     // TODO Toon form om bedrijf te wijzigen
 

@@ -87,5 +87,11 @@ public class DBFacade {
     
     
     
+    public List<Bedrijf> getAllBedrijven(){
+        Query AllBedrijvenQuery = em.createNamedQuery("Bedrijf.findAll");
+        List<Bedrijf> resultList = AllBedrijvenQuery.getResultList();
+        return resultList;
+    }
+    
     
 }

@@ -194,7 +194,7 @@ public class Bedrijf implements Serializable {
 
     @Override
     public String toString() {
-        return "stageplaatsenadmin.DAL.Bedrijf[ id=" + id + " ]";
+        return this.getNaam();
     }
     
 }
