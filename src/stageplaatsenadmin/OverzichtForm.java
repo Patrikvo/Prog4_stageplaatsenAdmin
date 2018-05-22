@@ -85,10 +85,21 @@ public class OverzichtForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListStageplaatsen = new javax.swing.JList();
         jLabelGUIID = new javax.swing.JLabel();
         jLabelID = new javax.swing.JLabel();
+        jLabelGUIAanmaakdatum = new javax.swing.JLabel();
+        jLabelAanmaakdatum = new javax.swing.JLabel();
+        jLabelGUILaatsteWijziging = new javax.swing.JLabel();
+        jLabellaatsteWijzing = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jButtonNewStageplaats = new javax.swing.JButton();
+        jButtonDeleteStageplaats = new javax.swing.JButton();
+        jButtonSaveStageplaats = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabelGUITitel = new javax.swing.JLabel();
         jTextFieldTitel = new javax.swing.JTextField();
         jLabelGUIOmschrijving = new javax.swing.JLabel();
@@ -107,21 +118,46 @@ public class OverzichtForm extends javax.swing.JFrame {
         jLabelGUIVoorzieningen = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextAreaVoorzieningen = new javax.swing.JTextArea();
-        jLabelGUIBedrijf = new javax.swing.JLabel();
-        jTextFieldBedrijfsnaam = new javax.swing.JTextField();
-        jButtonChangeBedrijf = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         jLabelGUISpecialisatie = new javax.swing.JLabel();
         jComboBoxSpecialisatie = new javax.swing.JComboBox<>();
         jLabelGUISitueert = new javax.swing.JLabel();
         jComboBoxSitueert = new javax.swing.JComboBox<>();
-        jLabelGUIAanmaakdatum = new javax.swing.JLabel();
-        jLabelAanmaakdatum = new javax.swing.JLabel();
-        jLabelGUILaatsteWijziging = new javax.swing.JLabel();
-        jLabellaatsteWijzing = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jButtonNewStageplaats = new javax.swing.JButton();
-        jButtonDeleteStageplaats = new javax.swing.JButton();
-        jButtonSaveStageplaats = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabelGUIBedrijf = new javax.swing.JLabel();
+        jTextFieldBedrijfsnaam = new javax.swing.JTextField();
+        jLabelGUIContactpersoon = new javax.swing.JLabel();
+        jTextFieldContactpersoon = new javax.swing.JTextField();
+        jLabelGUIEmail = new javax.swing.JLabel();
+        jTextFieldEmail = new javax.swing.JTextField();
+        jLabelGUIActiviteiten = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTextAreaActiviteiten = new javax.swing.JTextArea();
+        jLabelGUIAanwervend = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTextAreaAanwervend = new javax.swing.JTextArea();
+        jLabelGUIStraat = new javax.swing.JLabel();
+        jTextFieldStraat = new javax.swing.JTextField();
+        jLabelGUINummer = new javax.swing.JLabel();
+        jTextFieldNummer = new javax.swing.JTextField();
+        jLabelGUIPostcode = new javax.swing.JLabel();
+        jTextFieldPostcode = new javax.swing.JTextField();
+        jLabelGUIStad = new javax.swing.JLabel();
+        jTextFieldStad = new javax.swing.JTextField();
+        jLabelGUILand = new javax.swing.JLabel();
+        jTextFieldLand = new javax.swing.JTextField();
+        jLabelGUIAdres = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -140,6 +176,35 @@ public class OverzichtForm extends javax.swing.JFrame {
         jLabelGUIID.setText("ID");
 
         jLabelID.setText("00000");
+
+        jLabelGUIAanmaakdatum.setText("Aangemaakt op:");
+
+        jLabelAanmaakdatum.setText("01/01/2018 - 19u59");
+
+        jLabelGUILaatsteWijziging.setText("Laatste wijziging:");
+
+        jLabellaatsteWijzing.setText("01/01/2018 - 19u59");
+
+        jButtonNewStageplaats.setText("Nieuw");
+        jButtonNewStageplaats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNewStageplaatsActionPerformed(evt);
+            }
+        });
+
+        jButtonDeleteStageplaats.setText("Wissen");
+        jButtonDeleteStageplaats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteStageplaatsActionPerformed(evt);
+            }
+        });
+
+        jButtonSaveStageplaats.setText("Opslaan");
+        jButtonSaveStageplaats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveStageplaatsActionPerformed(evt);
+            }
+        });
 
         jLabelGUITitel.setText("Titel:");
 
@@ -182,14 +247,70 @@ public class OverzichtForm extends javax.swing.JFrame {
         jTextAreaVoorzieningen.setRows(5);
         jScrollPane5.setViewportView(jTextAreaVoorzieningen);
 
-        jLabelGUIBedrijf.setText("Bedrijf:");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jSliderAantalPlaatsen, javax.swing.GroupLayout.DEFAULT_SIZE, 1285, Short.MAX_VALUE)
+                    .addComponent(jTextFieldPeriode)
+                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane4)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldTitel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane5)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLabelGUIOmschrijving))
+                                    .addComponent(jLabelGUIAantalPlaatsen)
+                                    .addComponent(jLabelGUIPeriode)
+                                    .addComponent(jLabelGUITitel)
+                                    .addComponent(jLabelGUIBegeleiding)
+                                    .addComponent(jLabelGUIVereisteKennis)
+                                    .addComponent(jLabelGUIVoorzieningen))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabelGUITitel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldTitel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelGUIOmschrijving)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelGUIAantalPlaatsen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSliderAantalPlaatsen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelGUIPeriode)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelGUIBegeleiding)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelGUIVereisteKennis)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelGUIVoorzieningen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
 
-        jButtonChangeBedrijf.setText("Wijzigen");
-        jButtonChangeBedrijf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonChangeBedrijfActionPerformed(evt);
-            }
-        });
+        jTabbedPane1.addTab("Stageplaats", jPanel1);
 
         jLabelGUISpecialisatie.setText("Specialisatie:");
 
@@ -204,34 +325,159 @@ public class OverzichtForm extends javax.swing.JFrame {
 
         jComboBoxSitueert.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabelGUIAanmaakdatum.setText("Aangemaakt op:");
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBoxSitueert, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxSpecialisatie, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelGUISpecialisatie)
+                            .addComponent(jLabelGUISitueert))
+                        .addGap(0, 1058, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelGUISpecialisatie)
+                .addGap(0, 0, 0)
+                .addComponent(jComboBoxSpecialisatie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelGUISitueert)
+                .addGap(0, 0, 0)
+                .addComponent(jComboBoxSitueert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(494, Short.MAX_VALUE))
+        );
 
-        jLabelAanmaakdatum.setText("01/01/2018 - 19u59");
+        jTabbedPane1.addTab("Classificatie", jPanel2);
 
-        jLabelGUILaatsteWijziging.setText("Laatste wijziging:");
+        jLabelGUIBedrijf.setText("Bedrijf:");
 
-        jLabellaatsteWijzing.setText("01/01/2018 - 19u59");
+        jLabelGUIContactpersoon.setText("Contactpersoon");
 
-        jButtonNewStageplaats.setText("Nieuw");
-        jButtonNewStageplaats.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNewStageplaatsActionPerformed(evt);
-            }
-        });
+        jLabelGUIEmail.setText("Email");
 
-        jButtonDeleteStageplaats.setText("Wissen");
-        jButtonDeleteStageplaats.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDeleteStageplaatsActionPerformed(evt);
-            }
-        });
+        jLabelGUIActiviteiten.setText("Activiteiten");
 
-        jButtonSaveStageplaats.setText("Opslaan");
-        jButtonSaveStageplaats.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSaveStageplaatsActionPerformed(evt);
-            }
-        });
+        jTextAreaActiviteiten.setColumns(20);
+        jTextAreaActiviteiten.setRows(5);
+        jScrollPane6.setViewportView(jTextAreaActiviteiten);
+
+        jLabelGUIAanwervend.setText("Aanwervend:");
+
+        jTextAreaAanwervend.setColumns(20);
+        jTextAreaAanwervend.setRows(5);
+        jScrollPane7.setViewportView(jTextAreaAanwervend);
+
+        jLabelGUIStraat.setText("Straat");
+
+        jLabelGUINummer.setText("Nummer");
+
+        jLabelGUIPostcode.setText("Postcode");
+
+        jLabelGUIStad.setText("Stad");
+
+        jLabelGUILand.setText("Land");
+
+        jLabelGUIAdres.setText("Adres:");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldContactpersoon, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextFieldBedrijfsnaam)
+                    .addComponent(jTextFieldEmail)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1279, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelGUIBedrijf)
+                            .addComponent(jLabelGUIContactpersoon)
+                            .addComponent(jLabelGUIEmail)
+                            .addComponent(jLabelGUIActiviteiten)
+                            .addComponent(jLabelGUIAanwervend)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jTextFieldPostcode, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldStad, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabelGUIStraat)
+                                .addGap(474, 474, 474)
+                                .addComponent(jLabelGUINummer))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jTextFieldStraat, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldNummer, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabelGUIPostcode)
+                                .addGap(102, 102, 102)
+                                .addComponent(jLabelGUIStad))
+                            .addComponent(jLabelGUILand)
+                            .addComponent(jTextFieldLand, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelGUIAdres))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelGUIBedrijf)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldBedrijfsnaam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelGUIContactpersoon)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldContactpersoon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelGUIEmail)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelGUIActiviteiten)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelGUIAanwervend)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelGUIAdres)
+                .addGap(11, 11, 11)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelGUIStraat)
+                    .addComponent(jLabelGUINummer))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldStraat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNummer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelGUIPostcode)
+                    .addComponent(jLabelGUIStad))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldStad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldPostcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelGUILand)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Bedrijf", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -242,9 +488,6 @@ public class OverzichtForm extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelGUIAantalPlaatsen)
-                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -259,47 +502,17 @@ public class OverzichtForm extends javax.swing.JFrame {
                                 .addComponent(jLabelGUIAanmaakdatum)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabelAanmaakdatum))
-                            .addComponent(jScrollPane1)
-                            .addComponent(jTextFieldTitel, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabelGUIBedrijf)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jTextFieldBedrijfsnaam))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonChangeBedrijf))
-                            .addComponent(jSliderAantalPlaatsen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldPeriode)
-                            .addComponent(jScrollPane3)
-                            .addComponent(jScrollPane4)
-                            .addComponent(jScrollPane5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBoxSpecialisatie, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelGUIOmschrijving)
-                                    .addComponent(jLabelGUITitel)
-                                    .addComponent(jLabelGUIPeriode)
-                                    .addComponent(jLabelGUIBegeleiding)
-                                    .addComponent(jLabelGUIVereisteKennis)
-                                    .addComponent(jLabelGUIVoorzieningen)
-                                    .addComponent(jLabelGUISpecialisatie))
-                                .addGap(12, 12, 12)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBoxSitueert, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabelGUISitueert)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(486, 486, 486)
+                                .addGap(491, 491, 491)
                                 .addComponent(jButtonDeleteStageplaats)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonNewStageplaats)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonSaveStageplaats)
-                                .addGap(0, 591, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
-                    .addComponent(jSeparator1)))
+                    .addComponent(jSeparator1)
+                    .addComponent(jTabbedPane1)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,53 +521,13 @@ public class OverzichtForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabelGUITitel)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldTitel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelGUIOmschrijving)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelGUIAantalPlaatsen)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSliderAantalPlaatsen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelGUIPeriode)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelGUIBegeleiding)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelGUIVereisteKennis)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelGUIVoorzieningen)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelGUIBedrijf)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldBedrijfsnaam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonChangeBedrijf))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelGUISpecialisatie)
-                            .addComponent(jLabelGUISitueert))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxSpecialisatie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxSitueert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonNewStageplaats)
                             .addComponent(jButtonSaveStageplaats)
                             .addComponent(jButtonDeleteStageplaats))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,7 +539,7 @@ public class OverzichtForm extends javax.swing.JFrame {
                                 .addComponent(jLabelAanmaakdatum)
                                 .addComponent(jLabelGUILaatsteWijziging)
                                 .addComponent(jLabellaatsteWijzing)))
-                        .addContainerGap(18, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -375,18 +548,9 @@ public class OverzichtForm extends javax.swing.JFrame {
     private void jListStageplaatsenValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListStageplaatsenValueChanged
         Stageplaats s = (Stageplaats)jListStageplaatsen.getSelectedValue();
         if (s != null){ this.geselecteerdeStageplaats = s; }
+        ClearDisplayedStageplaats();
         refreshDisplayedStageplaats();
     }//GEN-LAST:event_jListStageplaatsenValueChanged
-
-    private void jButtonChangeBedrijfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChangeBedrijfActionPerformed
-        BedrijfForm bf = new BedrijfForm();
-        
-        bf.setVisible(true);
-
-    // TODO Toon form om bedrijf te wijzigen
-
-
-    }//GEN-LAST:event_jButtonChangeBedrijfActionPerformed
 
     private void jComboBoxSpecialisatieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSpecialisatieActionPerformed
         // TODO add your handling code here:
@@ -416,6 +580,7 @@ public class OverzichtForm extends javax.swing.JFrame {
         this.geselecteerdeStageplaats.setLaatsteWijziging(new Date());
         this.geselecteerdeStageplaats.setStudentStageplaatsList(new ArrayList<StudentStageplaats>());
         refreshDataCache();
+        ClearDisplayedStageplaats();
         refreshDisplayedStageplaats();
         
     }//GEN-LAST:event_jButtonNewStageplaatsActionPerformed
@@ -462,12 +627,26 @@ public class OverzichtForm extends javax.swing.JFrame {
             this.jTextAreaBegeleiding.setText((this.geselecteerdeStageplaats.getBegeleiding()));
             this.jTextAreaVereisteKennis.setText(this.geselecteerdeStageplaats.getExtraKennisVereist());
             this.jTextAreaVoorzieningen.setText(this.geselecteerdeStageplaats.getVoorzieningen());
-            this.jTextFieldBedrijfsnaam.setText(this.geselecteerdeStageplaats.getBedrijfID().getNaam());
             this.jComboBoxSpecialisatie.setSelectedItem(this.geselecteerdeStageplaats.getSitueertID().getSpecialisatieID());
             this.SpecialisatieSitueert = this.dbFacade.getAllSitueertOfSpecialisatieID(this.geselecteerdeStageplaats.getSitueertID().getSpecialisatieID().getId());
             this.jComboBoxSitueert.setModel(new DefaultComboBoxModel(this.SpecialisatieSitueert.toArray()));
             
             this.jComboBoxSitueert.setSelectedItem(this.geselecteerdeStageplaats.getSitueertID());
+            
+            // Bedrijf
+            this.jTextFieldBedrijfsnaam.setText(this.geselecteerdeStageplaats.getBedrijfID().getNaam());
+            this.jTextFieldContactpersoon.setText(this.geselecteerdeStageplaats.getBedrijfID().getContactNaam());
+            this.jTextFieldEmail.setText(this.geselecteerdeStageplaats.getBedrijfID().getContactEmail());
+            this.jTextAreaActiviteiten.setText(this.geselecteerdeStageplaats.getBedrijfID().getActiviteiten());
+            this.jTextAreaAanwervend.setText(this.geselecteerdeStageplaats.getBedrijfID().getAanwervend());
+            
+            this.jTextFieldStraat.setText(this.geselecteerdeStageplaats.getBedrijfID().getStraat());
+            this.jTextFieldNummer.setText(this.geselecteerdeStageplaats.getBedrijfID().getNummer());
+            this.jTextFieldPostcode.setText(this.geselecteerdeStageplaats.getBedrijfID().getPostcode());
+            this.jTextFieldStad.setText(this.geselecteerdeStageplaats.getBedrijfID().getStad());
+            this.jTextFieldLand.setText(this.geselecteerdeStageplaats.getBedrijfID().getLand());
+            
+            
             
             SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy '-' HH:mm:ss");
             this.jLabelAanmaakdatum.setText(dateformat.format(this.geselecteerdeStageplaats.getAanmaakDatum()));
@@ -502,6 +681,51 @@ public class OverzichtForm extends javax.swing.JFrame {
          //   this.jLabellaatsteWijzing.setText(dateformat.format(this.geselecteerdeStageplaats.getLaatsteWijziging()));
 
     }
+    
+    
+    
+    
+    private void ClearDisplayedStageplaats(){
+        
+        
+        
+            this.jLabelID.setText("");
+            
+            this.jTextFieldTitel.setText("");
+            this.jTextAreaOmschrijving.setText("");
+            this.jSliderAantalPlaatsen.setValue(1);
+            this.jTextFieldPeriode.setText("");
+            this.jTextAreaBegeleiding.setText("");
+            this.jTextAreaVereisteKennis.setText("");
+            this.jTextAreaVoorzieningen.setText("");
+  /*          this.jComboBoxSpecialisatie.setSelectedItem("");
+            this.SpecialisatieSitueert = this.dbFacade.getAllSitueertOfSpecialisatieID(1);
+            this.jComboBoxSitueert.setModel(new DefaultComboBoxModel(this.SpecialisatieSitueert.toArray()));
+            
+            this.jComboBoxSitueert.setSelectedIndex(1);
+ */           
+            // Bedrijf
+            this.jTextFieldBedrijfsnaam.setText("");
+            this.jTextFieldContactpersoon.setText("");
+            this.jTextFieldEmail.setText("");
+            this.jTextAreaActiviteiten.setText("");
+            this.jTextAreaAanwervend.setText("");
+            
+            this.jTextFieldStraat.setText("");
+            this.jTextFieldNummer.setText("");
+            this.jTextFieldPostcode.setText("");
+            this.jTextFieldStad.setText("");
+            this.jTextFieldLand.setText("");
+            
+            
+            
+            
+            this.jLabelAanmaakdatum.setText("");
+            this.jLabellaatsteWijzing.setText("");
+        
+    }
+    
+    
     
     
     
@@ -542,7 +766,6 @@ public class OverzichtForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonChangeBedrijf;
     private javax.swing.JButton jButtonDeleteStageplaats;
     private javax.swing.JButton jButtonNewStageplaats;
     private javax.swing.JButton jButtonSaveStageplaats;
@@ -551,33 +774,59 @@ public class OverzichtForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelAanmaakdatum;
     private javax.swing.JLabel jLabelGUIAanmaakdatum;
     private javax.swing.JLabel jLabelGUIAantalPlaatsen;
+    private javax.swing.JLabel jLabelGUIAanwervend;
+    private javax.swing.JLabel jLabelGUIActiviteiten;
+    private javax.swing.JLabel jLabelGUIAdres;
     private javax.swing.JLabel jLabelGUIBedrijf;
     private javax.swing.JLabel jLabelGUIBegeleiding;
+    private javax.swing.JLabel jLabelGUIContactpersoon;
+    private javax.swing.JLabel jLabelGUIEmail;
     private javax.swing.JLabel jLabelGUIID;
     private javax.swing.JLabel jLabelGUILaatsteWijziging;
+    private javax.swing.JLabel jLabelGUILand;
+    private javax.swing.JLabel jLabelGUINummer;
     private javax.swing.JLabel jLabelGUIOmschrijving;
     private javax.swing.JLabel jLabelGUIPeriode;
+    private javax.swing.JLabel jLabelGUIPostcode;
     private javax.swing.JLabel jLabelGUISitueert;
     private javax.swing.JLabel jLabelGUISpecialisatie;
+    private javax.swing.JLabel jLabelGUIStad;
+    private javax.swing.JLabel jLabelGUIStraat;
     private javax.swing.JLabel jLabelGUITitel;
     private javax.swing.JLabel jLabelGUIVereisteKennis;
     private javax.swing.JLabel jLabelGUIVoorzieningen;
     private javax.swing.JLabel jLabelID;
     private javax.swing.JLabel jLabellaatsteWijzing;
     private javax.swing.JList jListStageplaatsen;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSlider jSliderAantalPlaatsen;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextAreaAanwervend;
+    private javax.swing.JTextArea jTextAreaActiviteiten;
     private javax.swing.JTextArea jTextAreaBegeleiding;
     private javax.swing.JTextArea jTextAreaOmschrijving;
     private javax.swing.JTextArea jTextAreaVereisteKennis;
     private javax.swing.JTextArea jTextAreaVoorzieningen;
     private javax.swing.JTextField jTextFieldBedrijfsnaam;
+    private javax.swing.JTextField jTextFieldContactpersoon;
+    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldLand;
+    private javax.swing.JTextField jTextFieldNummer;
     private javax.swing.JTextField jTextFieldPeriode;
+    private javax.swing.JTextField jTextFieldPostcode;
+    private javax.swing.JTextField jTextFieldStad;
+    private javax.swing.JTextField jTextFieldStraat;
     private javax.swing.JTextField jTextFieldTitel;
     // End of variables declaration//GEN-END:variables
 }

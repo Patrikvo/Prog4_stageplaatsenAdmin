@@ -16,8 +16,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -65,12 +63,23 @@ public class Student implements Serializable {
     @Column(name = "LaatsteWijziging")
     @Temporal(TemporalType.DATE)
     private Date laatsteWijziging;
-    @JoinColumn(name = "AdresID", referencedColumnName = "ID")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Adres adresID;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "student", fetch = FetchType.EAGER)
     private List<StudentStageplaats> studentStageplaatsList;
 
+    @Column(name = "Straat")
+    private String straat;
+    @Column(name = "Nummer")
+    private String nummer;
+    @Column(name = "Stad")
+    private String stad;
+    @Column(name = "Postcode")
+    private String postcode;
+    @Column(name = "Land")
+    private String land;
+    
+    
+    
     public Student() {
     }
 
@@ -133,13 +142,6 @@ public class Student implements Serializable {
         this.laatsteWijziging = laatsteWijziging;
     }
 
-    public Adres getAdresID() {
-        return adresID;
-    }
-
-    public void setAdresID(Adres adresID) {
-        this.adresID = adresID;
-    }
 
     @XmlTransient
     public List<StudentStageplaats> getStudentStageplaatsList() {
@@ -150,6 +152,49 @@ public class Student implements Serializable {
         this.studentStageplaatsList = studentStageplaatsList;
     }
 
+    
+    public String getStraat() {
+        return straat;
+    }
+
+    public void setStraat(String straat) {
+        this.straat = straat;
+    }
+
+    public String getNummer() {
+        return nummer;
+    }
+
+    public void setNummer(String nummer) {
+        this.nummer = nummer;
+    }
+
+    public String getStad() {
+        return stad;
+    }
+
+    public void setStad(String stad) {
+        this.stad = stad;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public String getLand() {
+        return land;
+    }
+
+    public void setLand(String land) {
+        this.land = land;
+    }
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
