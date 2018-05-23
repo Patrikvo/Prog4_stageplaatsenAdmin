@@ -5,6 +5,7 @@
  */
 package DAL;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -65,6 +66,19 @@ public class DBFacade {
     }
     
     public void persist(Stageplaats stageplaats){
+        
+        Date now = new Date();
+        if (stageplaats.getAanmaakDatum() == null){
+                stageplaats.setAanmaakDatum(now);
+        }
+        stageplaats.setLaatsteWijziging(now);
+        
+        if (stageplaats.getBedrijfID().getAanmaakDatum() == null){
+            stageplaats.getBedrijfID().setAanmaakDatum(now);
+        }
+        stageplaats.getBedrijfID().setLaatsteWijziging(now);
+        
+        
         em.getTransaction( ).begin( );
         em.persist(stageplaats);
         em.getTransaction().commit();

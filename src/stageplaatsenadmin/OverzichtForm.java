@@ -5,6 +5,7 @@
  */
 package stageplaatsenadmin;
 
+import DAL.Bedrijf;
 import DAL.DBFacade;
 import DAL.Situeert;
 import DAL.Specialisatie;
@@ -147,6 +148,7 @@ public class OverzichtForm extends javax.swing.JFrame {
         jLabelGUILand = new javax.swing.JLabel();
         jTextFieldLand = new javax.swing.JTextField();
         jLabelGUIAdres = new javax.swing.JLabel();
+        jButtonBedrijfOpzoeken = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -255,7 +257,7 @@ public class OverzichtForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
-                    .addComponent(jSliderAantalPlaatsen, javax.swing.GroupLayout.DEFAULT_SIZE, 1285, Short.MAX_VALUE)
+                    .addComponent(jSliderAantalPlaatsen, javax.swing.GroupLayout.DEFAULT_SIZE, 1216, Short.MAX_VALUE)
                     .addComponent(jTextFieldPeriode)
                     .addComponent(jScrollPane3)
                     .addComponent(jScrollPane4)
@@ -338,7 +340,7 @@ public class OverzichtForm extends javax.swing.JFrame {
                             .addComponent(jComboBoxSpecialisatie, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelGUISpecialisatie)
                             .addComponent(jLabelGUISitueert))
-                        .addGap(0, 1058, Short.MAX_VALUE)))
+                        .addGap(0, 985, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -387,6 +389,13 @@ public class OverzichtForm extends javax.swing.JFrame {
 
         jLabelGUIAdres.setText("Adres:");
 
+        jButtonBedrijfOpzoeken.setText("Opzoeken");
+        jButtonBedrijfOpzoeken.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBedrijfOpzoekenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -397,7 +406,7 @@ public class OverzichtForm extends javax.swing.JFrame {
                     .addComponent(jTextFieldContactpersoon, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextFieldBedrijfsnaam)
                     .addComponent(jTextFieldEmail)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1279, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1206, Short.MAX_VALUE)
                     .addComponent(jScrollPane7)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,10 +416,6 @@ public class OverzichtForm extends javax.swing.JFrame {
                             .addComponent(jLabelGUIActiviteiten)
                             .addComponent(jLabelGUIAanwervend)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jTextFieldPostcode, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldStad, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabelGUIStraat)
                                 .addGap(474, 474, 474)
                                 .addComponent(jLabelGUINummer))
@@ -418,20 +423,34 @@ public class OverzichtForm extends javax.swing.JFrame {
                                 .addComponent(jTextFieldStraat, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldNummer, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelGUIAdres)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabelGUIPostcode)
-                                .addGap(102, 102, 102)
-                                .addComponent(jLabelGUIStad))
-                            .addComponent(jLabelGUILand)
-                            .addComponent(jTextFieldLand, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelGUIAdres))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jTextFieldPostcode, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldStad, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabelGUIPostcode)
+                                        .addGap(102, 102, 102)
+                                        .addComponent(jLabelGUIStad)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelGUILand)
+                                    .addComponent(jTextFieldLand, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(372, 372, 372)
+                .addComponent(jButtonBedrijfOpzoeken)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(9, 9, 9)
+                .addComponent(jButtonBedrijfOpzoeken)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelGUIBedrijf)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldBedrijfsnaam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -463,18 +482,16 @@ public class OverzichtForm extends javax.swing.JFrame {
                     .addComponent(jTextFieldNummer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelGUIStad)
                     .addComponent(jLabelGUIPostcode)
-                    .addComponent(jLabelGUIStad))
+                    .addComponent(jLabelGUILand))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldStad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextFieldPostcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelGUILand)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                        .addComponent(jTextFieldStad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldPostcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Bedrijf", jPanel4);
@@ -563,7 +580,7 @@ public class OverzichtForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         storeDisplayedStageplaats();
-        this.geselecteerdeStageplaats.setLaatsteWijziging(new Date());
+      
         this.dbFacade.persist((this.geselecteerdeStageplaats));
         refreshDataCache();
         refreshListbox();
@@ -575,7 +592,8 @@ public class OverzichtForm extends javax.swing.JFrame {
         this.geselecteerdeStageplaats = new Stageplaats();
         this.geselecteerdeStageplaats.setSitueertID((Situeert)this.jComboBoxSitueert.getSelectedItem());
         this.geselecteerdeStageplaats.getSitueertID().setSpecialisatieID((Specialisatie)this.jComboBoxSpecialisatie.getSelectedItem());
-        this.geselecteerdeStageplaats.setBedrijfID(this.dbFacade.getBedrijfByID(1));
+     //   this.geselecteerdeStageplaats.setBedrijfID(this.dbFacade.getBedrijfByID(1));
+        this.geselecteerdeStageplaats.setBedrijfID(new Bedrijf());
         this.geselecteerdeStageplaats.setAanmaakDatum(new Date());
         this.geselecteerdeStageplaats.setLaatsteWijziging(new Date());
         this.geselecteerdeStageplaats.setStudentStageplaatsList(new ArrayList<StudentStageplaats>());
@@ -589,15 +607,20 @@ public class OverzichtForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         Stageplaats s = (Stageplaats)jListStageplaatsen.getSelectedValue();
-        int index = this.jListStageplaatsen.getSelectedIndex();
-        this.dbFacade.removeStageplaats((s));
-        refreshDataCache();
-        refreshListbox();
-        if (index > 0) index--;
-        this.jListStageplaatsen.setSelectedIndex(index);
-        
+        if (s != null){
+            int index = this.jListStageplaatsen.getSelectedIndex();
+            this.dbFacade.removeStageplaats((s));
+            refreshDataCache();
+            refreshListbox();
+            if (index > 0) index--;
+            this.jListStageplaatsen.setSelectedIndex(index);
+        }
         
     }//GEN-LAST:event_jButtonDeleteStageplaatsActionPerformed
+
+    private void jButtonBedrijfOpzoekenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBedrijfOpzoekenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBedrijfOpzoekenActionPerformed
 
     private void loadStaticData(){
         this.specialisaties = this.dbFacade.getAllSpecialisaties();
@@ -671,15 +694,17 @@ public class OverzichtForm extends javax.swing.JFrame {
         this.geselecteerdeStageplaats.setSitueertID((Situeert)this.jComboBoxSitueert.getSelectedItem());
         this.geselecteerdeStageplaats.getSitueertID().setSpecialisatieID((Specialisatie)this.jComboBoxSpecialisatie.getSelectedItem());
             
-        
+        this.geselecteerdeStageplaats.getBedrijfID().setNaam(this.jTextFieldBedrijfsnaam.getText());
+        this.geselecteerdeStageplaats.getBedrijfID().setContactNaam(this.jTextFieldContactpersoon.getText());
+        this.geselecteerdeStageplaats.getBedrijfID().setContactEmail(this.jTextFieldEmail.getText());
+        this.geselecteerdeStageplaats.getBedrijfID().setActiviteiten(this.jTextAreaActiviteiten.getText());
+        this.geselecteerdeStageplaats.getBedrijfID().setAanwervend(this.jTextAreaAanwervend.getText());
+        this.geselecteerdeStageplaats.getBedrijfID().setStraat(this.jTextFieldStraat.getText());
+        this.geselecteerdeStageplaats.getBedrijfID().setNummer(this.jTextFieldNummer.getText());
+        this.geselecteerdeStageplaats.getBedrijfID().setPostcode(this.jTextFieldPostcode.getText());
+        this.geselecteerdeStageplaats.getBedrijfID().setStad(this.jTextFieldStad.getText());
+        this.geselecteerdeStageplaats.getBedrijfID().setLand(this.jTextFieldLand.getText());
             
-        //    this.jTextFieldBedrijfsnaam.setText(this.geselecteerdeStageplaats.getBedrijfID().getNaam());
-
-            
-         //   SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy '-' HH:mm:ss");
-         //   this.jLabelAanmaakdatum.setText(dateformat.format(this.geselecteerdeStageplaats.getAanmaakDatum()));
-         //   this.jLabellaatsteWijzing.setText(dateformat.format(this.geselecteerdeStageplaats.getLaatsteWijziging()));
-
     }
     
     
@@ -766,6 +791,7 @@ public class OverzichtForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBedrijfOpzoeken;
     private javax.swing.JButton jButtonDeleteStageplaats;
     private javax.swing.JButton jButtonNewStageplaats;
     private javax.swing.JButton jButtonSaveStageplaats;

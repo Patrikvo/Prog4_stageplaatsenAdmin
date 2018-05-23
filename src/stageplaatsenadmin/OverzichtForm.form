@@ -219,7 +219,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jSliderAantalPlaatsen" alignment="0" pref="1285" max="32767" attributes="0"/>
+                          <Component id="jSliderAantalPlaatsen" alignment="0" pref="1216" max="32767" attributes="0"/>
                           <Component id="jTextFieldPeriode" alignment="0" max="32767" attributes="0"/>
                           <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
                           <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
@@ -422,7 +422,7 @@
                                   <Component id="jLabelGUISpecialisatie" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelGUISitueert" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="1058" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="985" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -509,7 +509,7 @@
                           <Component id="jTextFieldContactpersoon" alignment="1" max="32767" attributes="0"/>
                           <Component id="jTextFieldBedrijfsnaam" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextFieldEmail" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jScrollPane6" alignment="0" pref="1279" max="32767" attributes="0"/>
+                          <Component id="jScrollPane6" alignment="0" pref="1206" max="32767" attributes="0"/>
                           <Component id="jScrollPane7" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -518,11 +518,6 @@
                                   <Component id="jLabelGUIEmail" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelGUIActiviteiten" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelGUIAanwervend" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jTextFieldPostcode" min="-2" pref="144" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextFieldStad" min="-2" pref="482" max="-2" attributes="0"/>
-                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabelGUIStraat" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="474" max="-2" attributes="0"/>
@@ -533,26 +528,45 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jTextFieldNummer" min="-2" pref="394" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelGUIPostcode" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-                                      <Component id="jLabelGUIStad" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jLabelGUILand" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldLand" alignment="0" min="-2" pref="632" max="-2" attributes="0"/>
                                   <Component id="jLabelGUIAdres" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jTextFieldPostcode" min="-2" pref="144" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jTextFieldStad" min="-2" pref="482" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabelGUIPostcode" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                                              <Component id="jLabelGUIStad" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabelGUILand" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldLand" min="-2" pref="531" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="372" max="-2" attributes="0"/>
+                      <Component id="jButtonBedrijfOpzoeken" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <Component id="jButtonBedrijfOpzoeken" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabelGUIBedrijf" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTextFieldBedrijfsnaam" min="-2" max="-2" attributes="0"/>
@@ -586,19 +600,19 @@
                       </Group>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelGUIPostcode" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelGUIStad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelGUIPostcode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelGUILand" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextFieldStad" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="jTextFieldStad" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldLand" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="jTextFieldPostcode" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabelGUILand" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextFieldLand" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="67" max="32767" attributes="0"/>
+                      <EmptySpace pref="90" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -704,6 +718,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Adres:"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonBedrijfOpzoeken">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Opzoeken"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBedrijfOpzoekenActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

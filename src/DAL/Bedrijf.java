@@ -19,6 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -46,7 +47,8 @@ public class Bedrijf implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "myseqBedrijf", sequenceName = "MySEQBedrijf", allocationSize = 1, initialValue = 10)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator="myseqBedrijf")
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;

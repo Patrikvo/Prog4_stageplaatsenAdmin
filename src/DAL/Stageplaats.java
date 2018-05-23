@@ -83,7 +83,7 @@ public class Stageplaats implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Situeert situeertID;
     @JoinColumn(name = "BedrijfID", referencedColumnName = "ID")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.PERSIST, optional = false, fetch = FetchType.EAGER)
     private Bedrijf bedrijfID;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "stageplaats", fetch = FetchType.EAGER)
     private List<StudentStageplaats> studentStageplaatsList;
