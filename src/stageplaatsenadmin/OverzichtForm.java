@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 
 /**
  *
@@ -30,7 +31,8 @@ public class OverzichtForm extends javax.swing.JFrame {
     private List<Stageplaats> stageplaatsen;
     private List<Specialisatie> specialisaties;
     private List<Situeert> SpecialisatieSitueert;
-    private DBFacade dbFacade;
+    private List<Bedrijf> bedrijven;
+    private final DBFacade dbFacade;
     private Stageplaats geselecteerdeStageplaats;
     
     
@@ -40,36 +42,21 @@ public class OverzichtForm extends javax.swing.JFrame {
         geselecteerdeStageplaats = null;
         specialisaties = null;
         SpecialisatieSitueert = null;
+        bedrijven = null;
         this.refreshDataCache();
         loadStaticData();
         this.refreshListbox();
-
+        enableButtons();
 /*
-        example code listbox:
-        
-        
+            
        private void btnOpslaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpslaanActionPerformed
-        // TODO add your handling code here:
-        
-        Stageplaats s = new Stageplaats();
-        s.setEmail(txtEmail.getText());
-        s.setGeboortejaar(Integer.parseInt(txtGeboortejaar.getText()));
-        s.setGsm(txtGsm.getText());
-        s.setNaam(txtNaam.getText());
-        
-        stageplaatsen.add(s);
+    
+        stageplaats.add(s);
         refreshListbox();
         
     }//GEN-LAST:event_btnOpslaanActionPerformed
 
-    private void btnVerwijderenActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        
-        Stageplaats s = (Stageplaats)jList1.getSelectedValue();
-        Stageplaatsen.remove(s);
-        refreshListbox();
-        
-        
-    }                                                   
+                                                    
                
 
         
@@ -148,7 +135,9 @@ public class OverzichtForm extends javax.swing.JFrame {
         jLabelGUILand = new javax.swing.JLabel();
         jTextFieldLand = new javax.swing.JTextField();
         jLabelGUIAdres = new javax.swing.JLabel();
-        jButtonBedrijfOpzoeken = new javax.swing.JButton();
+        jButtonBedrijfSelecteren = new javax.swing.JButton();
+        jComboBoxGekendeBedrijven = new javax.swing.JComboBox();
+        jButtonBeheerBedrijven = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -389,10 +378,19 @@ public class OverzichtForm extends javax.swing.JFrame {
 
         jLabelGUIAdres.setText("Adres:");
 
-        jButtonBedrijfOpzoeken.setText("Opzoeken");
-        jButtonBedrijfOpzoeken.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBedrijfSelecteren.setText("Selecteren");
+        jButtonBedrijfSelecteren.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBedrijfOpzoekenActionPerformed(evt);
+                jButtonBedrijfSelecterenActionPerformed(evt);
+            }
+        });
+
+        jComboBoxGekendeBedrijven.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButtonBeheerBedrijven.setText("Beheer Bedrijven");
+        jButtonBeheerBedrijven.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBeheerBedrijvenActionPerformed(evt);
             }
         });
 
@@ -401,55 +399,63 @@ public class OverzichtForm extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldContactpersoon, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextFieldBedrijfsnaam)
-                    .addComponent(jTextFieldEmail)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1206, Short.MAX_VALUE)
-                    .addComponent(jScrollPane7)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelGUIBedrijf)
-                            .addComponent(jLabelGUIContactpersoon)
-                            .addComponent(jLabelGUIEmail)
-                            .addComponent(jLabelGUIActiviteiten)
-                            .addComponent(jLabelGUIAanwervend)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabelGUIStraat)
-                                .addGap(474, 474, 474)
-                                .addComponent(jLabelGUINummer))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jTextFieldStraat, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldNummer, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabelGUIAdres)
+                            .addComponent(jTextFieldContactpersoon, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldBedrijfsnaam)
+                            .addComponent(jTextFieldEmail)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1206, Short.MAX_VALUE)
+                            .addComponent(jScrollPane7)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelGUIBedrijf)
+                                    .addComponent(jLabelGUIContactpersoon)
+                                    .addComponent(jLabelGUIEmail)
+                                    .addComponent(jLabelGUIActiviteiten)
+                                    .addComponent(jLabelGUIAanwervend)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jTextFieldPostcode, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabelGUIStraat)
+                                        .addGap(474, 474, 474)
+                                        .addComponent(jLabelGUINummer))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jTextFieldStraat, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldStad, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextFieldNummer, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabelGUIAdres)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabelGUIPostcode)
-                                        .addGap(102, 102, 102)
-                                        .addComponent(jLabelGUIStad)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelGUILand)
-                                    .addComponent(jTextFieldLand, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addComponent(jTextFieldPostcode, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextFieldStad, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addComponent(jLabelGUIPostcode)
+                                                .addGap(102, 102, 102)
+                                                .addComponent(jLabelGUIStad)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabelGUILand)
+                                            .addComponent(jTextFieldLand, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jComboBoxGekendeBedrijven, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonBedrijfSelecteren)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonBeheerBedrijven)))
                 .addContainerGap())
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(372, 372, 372)
-                .addComponent(jButtonBedrijfOpzoeken)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(jButtonBedrijfOpzoeken)
+                .addGap(11, 11, 11)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxGekendeBedrijven, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBedrijfSelecteren)
+                    .addComponent(jButtonBeheerBedrijven))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelGUIBedrijf)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -491,7 +497,7 @@ public class OverzichtForm extends javax.swing.JFrame {
                         .addComponent(jTextFieldStad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextFieldLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextFieldPostcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Bedrijf", jPanel4);
@@ -567,6 +573,7 @@ public class OverzichtForm extends javax.swing.JFrame {
         if (s != null){ this.geselecteerdeStageplaats = s; }
         ClearDisplayedStageplaats();
         refreshDisplayedStageplaats();
+        enableButtons();
     }//GEN-LAST:event_jListStageplaatsenValueChanged
 
     private void jComboBoxSpecialisatieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSpecialisatieActionPerformed
@@ -593,14 +600,14 @@ public class OverzichtForm extends javax.swing.JFrame {
         this.geselecteerdeStageplaats.setSitueertID((Situeert)this.jComboBoxSitueert.getSelectedItem());
         this.geselecteerdeStageplaats.getSitueertID().setSpecialisatieID((Specialisatie)this.jComboBoxSpecialisatie.getSelectedItem());
      //   this.geselecteerdeStageplaats.setBedrijfID(this.dbFacade.getBedrijfByID(1));
-        this.geselecteerdeStageplaats.setBedrijfID(new Bedrijf());
+        this.geselecteerdeStageplaats.setBedrijfID(null);
         this.geselecteerdeStageplaats.setAanmaakDatum(new Date());
         this.geselecteerdeStageplaats.setLaatsteWijziging(new Date());
         this.geselecteerdeStageplaats.setStudentStageplaatsList(new ArrayList<StudentStageplaats>());
         refreshDataCache();
         ClearDisplayedStageplaats();
         refreshDisplayedStageplaats();
-        
+        enableButtons();
     }//GEN-LAST:event_jButtonNewStageplaatsActionPerformed
 
     private void jButtonDeleteStageplaatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteStageplaatsActionPerformed
@@ -609,18 +616,42 @@ public class OverzichtForm extends javax.swing.JFrame {
         Stageplaats s = (Stageplaats)jListStageplaatsen.getSelectedValue();
         if (s != null){
             int index = this.jListStageplaatsen.getSelectedIndex();
-            this.dbFacade.removeStageplaats((s));
-            refreshDataCache();
-            refreshListbox();
-            if (index > 0) index--;
-            this.jListStageplaatsen.setSelectedIndex(index);
+            Stageplaats sFromDB = this.dbFacade.getStageplaatsByID(s.getId());
+            if (sFromDB != null){
+                this.dbFacade.remove(sFromDB);
+                refreshDataCache();
+                refreshListbox();
+                if (index > 0) index--;
+                this.jListStageplaatsen.setSelectedIndex(index);
+            }
         }
-        
+        enableButtons();
     }//GEN-LAST:event_jButtonDeleteStageplaatsActionPerformed
 
-    private void jButtonBedrijfOpzoekenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBedrijfOpzoekenActionPerformed
+
+    
+    private void jButtonBedrijfSelecterenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBedrijfSelecterenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonBedrijfOpzoekenActionPerformed
+        Bedrijf geselecteerdBedrijf = (Bedrijf)this.jComboBoxGekendeBedrijven.getSelectedItem();
+        if (geselecteerdBedrijf != null && geselecteerdBedrijf.getId() != null){
+            this.geselecteerdeStageplaats.setBedrijfID(this.dbFacade.getBedrijfByID(geselecteerdBedrijf.getId()));
+            displayBedrijf();
+        }
+        this.enableButtons();
+    }//GEN-LAST:event_jButtonBedrijfSelecterenActionPerformed
+
+    
+    BedrijfForm bedrijfForm;
+    
+    private void jButtonBeheerBedrijvenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBeheerBedrijvenActionPerformed
+        // TODO add your handling code here:
+        if (bedrijfForm == null) {
+            bedrijfForm = new BedrijfForm(this, this.dbFacade);
+            bedrijfForm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        }
+        bedrijfForm.setVisible(true);
+        
+    }//GEN-LAST:event_jButtonBeheerBedrijvenActionPerformed
 
     private void loadStaticData(){
         this.specialisaties = this.dbFacade.getAllSpecialisaties();
@@ -632,11 +663,26 @@ public class OverzichtForm extends javax.swing.JFrame {
     
     private void refreshDataCache(){
         this.stageplaatsen = dbFacade.getAllStageplaatsen();
+        this.bedrijven = dbFacade.getAllBedrijven();
     }
     
     private void refreshListbox(){
         this.jListStageplaatsen.setListData(this.stageplaatsen.toArray());
+        this.jComboBoxGekendeBedrijven.setModel(new DefaultComboBoxModel(this.bedrijven.toArray()));
+        
     }
+    
+    public void reloadDatasources(){
+        refreshDataCache();
+        refreshListbox();
+        
+        if (this.geselecteerdeStageplaats != null)
+        { 
+            this.geselecteerdeStageplaats =  this.dbFacade.getStageplaatsByID(this.geselecteerdeStageplaats.getId());
+        }
+        refreshDisplayedStageplaats();
+    }
+    
     
     private void refreshDisplayedStageplaats(){
         if (this.geselecteerdeStageplaats != null){
@@ -657,17 +703,7 @@ public class OverzichtForm extends javax.swing.JFrame {
             this.jComboBoxSitueert.setSelectedItem(this.geselecteerdeStageplaats.getSitueertID());
             
             // Bedrijf
-            this.jTextFieldBedrijfsnaam.setText(this.geselecteerdeStageplaats.getBedrijfID().getNaam());
-            this.jTextFieldContactpersoon.setText(this.geselecteerdeStageplaats.getBedrijfID().getContactNaam());
-            this.jTextFieldEmail.setText(this.geselecteerdeStageplaats.getBedrijfID().getContactEmail());
-            this.jTextAreaActiviteiten.setText(this.geselecteerdeStageplaats.getBedrijfID().getActiviteiten());
-            this.jTextAreaAanwervend.setText(this.geselecteerdeStageplaats.getBedrijfID().getAanwervend());
-            
-            this.jTextFieldStraat.setText(this.geselecteerdeStageplaats.getBedrijfID().getStraat());
-            this.jTextFieldNummer.setText(this.geselecteerdeStageplaats.getBedrijfID().getNummer());
-            this.jTextFieldPostcode.setText(this.geselecteerdeStageplaats.getBedrijfID().getPostcode());
-            this.jTextFieldStad.setText(this.geselecteerdeStageplaats.getBedrijfID().getStad());
-            this.jTextFieldLand.setText(this.geselecteerdeStageplaats.getBedrijfID().getLand());
+            displayBedrijf();
             
             
             
@@ -694,18 +730,35 @@ public class OverzichtForm extends javax.swing.JFrame {
         this.geselecteerdeStageplaats.setSitueertID((Situeert)this.jComboBoxSitueert.getSelectedItem());
         this.geselecteerdeStageplaats.getSitueertID().setSpecialisatieID((Specialisatie)this.jComboBoxSpecialisatie.getSelectedItem());
             
-        this.geselecteerdeStageplaats.getBedrijfID().setNaam(this.jTextFieldBedrijfsnaam.getText());
-        this.geselecteerdeStageplaats.getBedrijfID().setContactNaam(this.jTextFieldContactpersoon.getText());
-        this.geselecteerdeStageplaats.getBedrijfID().setContactEmail(this.jTextFieldEmail.getText());
-        this.geselecteerdeStageplaats.getBedrijfID().setActiviteiten(this.jTextAreaActiviteiten.getText());
-        this.geselecteerdeStageplaats.getBedrijfID().setAanwervend(this.jTextAreaAanwervend.getText());
-        this.geselecteerdeStageplaats.getBedrijfID().setStraat(this.jTextFieldStraat.getText());
-        this.geselecteerdeStageplaats.getBedrijfID().setNummer(this.jTextFieldNummer.getText());
-        this.geselecteerdeStageplaats.getBedrijfID().setPostcode(this.jTextFieldPostcode.getText());
-        this.geselecteerdeStageplaats.getBedrijfID().setStad(this.jTextFieldStad.getText());
-        this.geselecteerdeStageplaats.getBedrijfID().setLand(this.jTextFieldLand.getText());
+//        this.geselecteerdeStageplaats.getBedrijfID().setNaam(this.jTextFieldBedrijfsnaam.getText());
+//        this.geselecteerdeStageplaats.getBedrijfID().setContactNaam(this.jTextFieldContactpersoon.getText());
+//        this.geselecteerdeStageplaats.getBedrijfID().setContactEmail(this.jTextFieldEmail.getText());
+//        this.geselecteerdeStageplaats.getBedrijfID().setActiviteiten(this.jTextAreaActiviteiten.getText());
+//        this.geselecteerdeStageplaats.getBedrijfID().setAanwervend(this.jTextAreaAanwervend.getText());
+//        this.geselecteerdeStageplaats.getBedrijfID().setStraat(this.jTextFieldStraat.getText());
+//        this.geselecteerdeStageplaats.getBedrijfID().setNummer(this.jTextFieldNummer.getText());
+//        this.geselecteerdeStageplaats.getBedrijfID().setPostcode(this.jTextFieldPostcode.getText());
+//        this.geselecteerdeStageplaats.getBedrijfID().setStad(this.jTextFieldStad.getText());
+//        this.geselecteerdeStageplaats.getBedrijfID().setLand(this.jTextFieldLand.getText());
             
     }
+    
+    private void displayBedrijf(){
+            if (this.geselecteerdeStageplaats.getBedrijfID() != null){
+            this.jTextFieldBedrijfsnaam.setText(this.geselecteerdeStageplaats.getBedrijfID().getNaam());
+            this.jTextFieldContactpersoon.setText(this.geselecteerdeStageplaats.getBedrijfID().getContactNaam());
+            this.jTextFieldEmail.setText(this.geselecteerdeStageplaats.getBedrijfID().getContactEmail());
+            this.jTextAreaActiviteiten.setText(this.geselecteerdeStageplaats.getBedrijfID().getActiviteiten());
+            this.jTextAreaAanwervend.setText(this.geselecteerdeStageplaats.getBedrijfID().getAanwervend());
+            
+            this.jTextFieldStraat.setText(this.geselecteerdeStageplaats.getBedrijfID().getStraat());
+            this.jTextFieldNummer.setText(this.geselecteerdeStageplaats.getBedrijfID().getNummer());
+            this.jTextFieldPostcode.setText(this.geselecteerdeStageplaats.getBedrijfID().getPostcode());
+            this.jTextFieldStad.setText(this.geselecteerdeStageplaats.getBedrijfID().getStad());
+            this.jTextFieldLand.setText(this.geselecteerdeStageplaats.getBedrijfID().getLand());
+            }
+    }
+    
     
     
     
@@ -751,6 +804,25 @@ public class OverzichtForm extends javax.swing.JFrame {
     }
     
     
+    private void enableButtons(){
+        
+        if (this.geselecteerdeStageplaats != null && this.geselecteerdeStageplaats.getBedrijfID() != null){
+            this.jButtonSaveStageplaats.setEnabled(true);
+            this.jButtonDeleteStageplaats.setEnabled(true);
+
+        }
+        else{
+            this.jButtonSaveStageplaats.setEnabled(false);
+            this.jButtonDeleteStageplaats.setEnabled(false);
+        }
+            if (this.jComboBoxGekendeBedrijven.getSelectedItem() != null){
+                this.jButtonBedrijfSelecteren.setEnabled(true);
+            }
+            else {
+                this.jButtonBedrijfSelecteren.setEnabled(false);
+            }
+        
+    }
     
     
     
@@ -791,10 +863,12 @@ public class OverzichtForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonBedrijfOpzoeken;
+    private javax.swing.JButton jButtonBedrijfSelecteren;
+    private javax.swing.JButton jButtonBeheerBedrijven;
     private javax.swing.JButton jButtonDeleteStageplaats;
     private javax.swing.JButton jButtonNewStageplaats;
     private javax.swing.JButton jButtonSaveStageplaats;
+    private javax.swing.JComboBox jComboBoxGekendeBedrijven;
     private javax.swing.JComboBox<String> jComboBoxSitueert;
     private javax.swing.JComboBox<String> jComboBoxSpecialisatie;
     private javax.swing.JLabel jLabelAanmaakdatum;

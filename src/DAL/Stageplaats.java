@@ -82,9 +82,12 @@ public class Stageplaats implements Serializable {
     @JoinColumn(name = "SitueertID", referencedColumnName = "ID")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Situeert situeertID;
+    
     @JoinColumn(name = "BedrijfID", referencedColumnName = "ID")
-    @ManyToOne(cascade = CascadeType.PERSIST, optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = true)
+    //@ManyToOne(cascade = CascadeType.PERSIST, optional = true, fetch = FetchType.EAGER)
     private Bedrijf bedrijfID;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "stageplaats", fetch = FetchType.EAGER)
     private List<StudentStageplaats> studentStageplaatsList;
 
@@ -114,6 +117,21 @@ public class Stageplaats implements Serializable {
         
     }
 
+    public void update(Stageplaats s){
+        this.setTitel(s.getTitel());
+        this.setOmschrijving(s.getOmschrijving());
+        this.setAantalPlaatsen(s.getAantalPlaatsen());
+        this.setPeriode(s.getPeriode());
+        this.setBegeleiding(s.getBegeleiding());   
+        this.setExtraKennisVereist(s.getExtraKennisVereist());       
+        this.setVoorzieningen(s.getVoorzieningen());       
+        this.setAanmaakDatum(s.getAanmaakDatum());      
+        this.setLaatsteWijziging(s.getLaatsteWijziging());    
+        this.setSitueertID(s.getSitueertID());
+        this.setBedrijfID(s.getBedrijfID());
+    }
+    
+    
     public Integer getId() {
         return id;
     }

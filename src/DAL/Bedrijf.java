@@ -89,11 +89,12 @@ public class Bedrijf implements Serializable {
     
     
     
-    public Bedrijf() {
+    public Bedrijf() { 
+        this(null);
     }
 
     public Bedrijf(Integer id) {
-        this.id = id;
+        this(id, "onbekend", new Date(), new Date());
     }
 
     public Bedrijf(Integer id, String naam, Date aanmaakDatum, Date laatsteWijziging) {
@@ -103,6 +104,23 @@ public class Bedrijf implements Serializable {
         this.laatsteWijziging = laatsteWijziging;
     }
 
+    
+    public void update(Bedrijf bedrijf){
+        this.setNaam(bedrijf.getNaam());
+        this.setContactNaam(bedrijf.getContactNaam());
+        this.setContactEmail(bedrijf.getContactEmail());
+        this.setActiviteiten(bedrijf.getActiviteiten());
+        this.setAanwervend(bedrijf.getAanwervend());
+        this.setAanmaakDatum(bedrijf.getAanmaakDatum());
+        this.setLaatsteWijziging(bedrijf.getLaatsteWijziging());
+        this.setStraat(bedrijf.getStraat());
+        this.setNummer(bedrijf.getNummer());
+        this.setStad(bedrijf.getStad());
+        this.setPostcode(bedrijf.getPostcode());
+        this.setLand(bedrijf.getLand());
+        this.setStageplaatsList(bedrijf.getStageplaatsList());
+    }
+    
     public Integer getId() {
         return id;
     }
