@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package stageplaatsenadmin;
 
 import DAL.Bedrijf;
@@ -19,7 +14,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 
 /**
- *
+ * Main form for managing the Stageplaatsen.
  * @author patrik
  */
 public class OverzichtForm extends javax.swing.JFrame {
@@ -35,7 +30,9 @@ public class OverzichtForm extends javax.swing.JFrame {
     private final DBFacade dbFacade;
     private Stageplaats geselecteerdeStageplaats;
     
-    
+    /**
+     * Constructor
+     */
     public OverzichtForm() {
         initComponents();
         dbFacade = new DBFacade();
@@ -47,19 +44,13 @@ public class OverzichtForm extends javax.swing.JFrame {
         loadStaticData();
         this.refreshListbox();
         enableButtons();
-/*
-            
+
+/*    
        private void btnOpslaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpslaanActionPerformed
-    
+
         stageplaats.add(s);
         refreshListbox();
-        
     }//GEN-LAST:event_btnOpslaanActionPerformed
-
-                                                    
-               
-
-        
 */  
         
     }
@@ -568,6 +559,9 @@ public class OverzichtForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     /**
+     * Displays the selected Stageplaats.
+     */
     private void jListStageplaatsenValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListStageplaatsenValueChanged
         Stageplaats s = (Stageplaats)jListStageplaatsen.getSelectedValue();
         if (s != null){ this.geselecteerdeStageplaats = s; }
@@ -576,16 +570,20 @@ public class OverzichtForm extends javax.swing.JFrame {
         enableButtons();
     }//GEN-LAST:event_jListStageplaatsenValueChanged
 
+     /**
+     * Fills the Situeert-combobox with the Situeert related to the selected Specialisatie.
+     */
     private void jComboBoxSpecialisatieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSpecialisatieActionPerformed
-        // TODO add your handling code here:
+
         this.SpecialisatieSitueert = this.dbFacade.getAllSitueertOfSpecialisatieID(((Specialisatie)this.jComboBoxSpecialisatie.getSelectedItem()).getId());
-            //    this.geselecteerdeStageplaats.getSitueertID().getSpecialisatieID().getId());
         this.jComboBoxSitueert.setModel(new DefaultComboBoxModel(this.SpecialisatieSitueert.toArray()));
     }//GEN-LAST:event_jComboBoxSpecialisatieActionPerformed
 
+     /**
+     * Stores the displayed Stageplaats in the database.
+     */
     private void jButtonSaveStageplaatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveStageplaatsActionPerformed
-        // TODO add your handling code here:
-        
+
         storeDisplayedStageplaats();
       
         this.dbFacade.persist((this.geselecteerdeStageplaats));
@@ -593,13 +591,14 @@ public class OverzichtForm extends javax.swing.JFrame {
         refreshListbox();
     }//GEN-LAST:event_jButtonSaveStageplaatsActionPerformed
 
+     /**
+     * Creates a new Stageplaats, and displays it. Requires to be stored afterwards.
+     */
     private void jButtonNewStageplaatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewStageplaatsActionPerformed
-        // TODO add your handling code here:
-        
+
         this.geselecteerdeStageplaats = new Stageplaats();
         this.geselecteerdeStageplaats.setSitueertID((Situeert)this.jComboBoxSitueert.getSelectedItem());
         this.geselecteerdeStageplaats.getSitueertID().setSpecialisatieID((Specialisatie)this.jComboBoxSpecialisatie.getSelectedItem());
-     //   this.geselecteerdeStageplaats.setBedrijfID(this.dbFacade.getBedrijfByID(1));
         this.geselecteerdeStageplaats.setBedrijfID(null);
         this.geselecteerdeStageplaats.setAanmaakDatum(new Date());
         this.geselecteerdeStageplaats.setLaatsteWijziging(new Date());
@@ -610,9 +609,11 @@ public class OverzichtForm extends javax.swing.JFrame {
         enableButtons();
     }//GEN-LAST:event_jButtonNewStageplaatsActionPerformed
 
+     /**
+     * Deletes the selected Stageplaats.
+     */
     private void jButtonDeleteStageplaatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteStageplaatsActionPerformed
-        // TODO add your handling code here:
-        
+
         Stageplaats s = (Stageplaats)jListStageplaatsen.getSelectedValue();
         if (s != null){
             int index = this.jListStageplaatsen.getSelectedIndex();
@@ -629,9 +630,11 @@ public class OverzichtForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteStageplaatsActionPerformed
 
 
-    
+     /**
+     * Adds the selected Bedrijf to the displayed Stageplaats. Requires to be stored afterwards.
+     */
     private void jButtonBedrijfSelecterenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBedrijfSelecterenActionPerformed
-        // TODO add your handling code here:
+
         Bedrijf geselecteerdBedrijf = (Bedrijf)this.jComboBoxGekendeBedrijven.getSelectedItem();
         if (geselecteerdBedrijf != null && geselecteerdBedrijf.getId() != null){
             this.geselecteerdeStageplaats.setBedrijfID(this.dbFacade.getBedrijfByID(geselecteerdBedrijf.getId()));
@@ -641,10 +644,13 @@ public class OverzichtForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBedrijfSelecterenActionPerformed
 
     
-    BedrijfForm bedrijfForm;
+    private BedrijfForm bedrijfForm;
     
+     /**
+     * Opens the BedrijfForm to manage the Bedrijven  in the database.
+     */
     private void jButtonBeheerBedrijvenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBeheerBedrijvenActionPerformed
-        // TODO add your handling code here:
+
         if (bedrijfForm == null) {
             bedrijfForm = new BedrijfForm(this, this.dbFacade);
             bedrijfForm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -653,6 +659,9 @@ public class OverzichtForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonBeheerBedrijvenActionPerformed
 
+     /**
+     * Loads all constant values from the database.
+     */
     private void loadStaticData(){
         this.specialisaties = this.dbFacade.getAllSpecialisaties();
         this.jComboBoxSpecialisatie.setModel(new DefaultComboBoxModel(this.specialisaties.toArray()));
@@ -660,18 +669,26 @@ public class OverzichtForm extends javax.swing.JFrame {
         this.jComboBoxSitueert.setModel(new DefaultComboBoxModel(this.SpecialisatieSitueert.toArray()));
     }
     
-    
+     /**
+     * Reloads the list of stageplaatsen and Bedrijven from the database.
+     */
     private void refreshDataCache(){
         this.stageplaatsen = dbFacade.getAllStageplaatsen();
         this.bedrijven = dbFacade.getAllBedrijven();
     }
     
+     /**
+     * Reloads the listboc/combobox of stageplaatsen and Bedrijven from the lists.
+     */
     private void refreshListbox(){
         this.jListStageplaatsen.setListData(this.stageplaatsen.toArray());
         this.jComboBoxGekendeBedrijven.setModel(new DefaultComboBoxModel(this.bedrijven.toArray()));
         
     }
     
+    /**
+     * Force a full reload of the stageplaats en Bedrijf lists and listbox/combox. 
+     */
     public void reloadDatasources(){
         refreshDataCache();
         refreshListbox();
@@ -683,7 +700,9 @@ public class OverzichtForm extends javax.swing.JFrame {
         refreshDisplayedStageplaats();
     }
     
-    
+     /**
+     * Reloads the displayed stageplaats.
+     */
     private void refreshDisplayedStageplaats(){
         if (this.geselecteerdeStageplaats != null){
             if (this.geselecteerdeStageplaats.getId() != null){
@@ -705,16 +724,15 @@ public class OverzichtForm extends javax.swing.JFrame {
             // Bedrijf
             displayBedrijf();
             
-            
-            
             SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy '-' HH:mm:ss");
             this.jLabelAanmaakdatum.setText(dateformat.format(this.geselecteerdeStageplaats.getAanmaakDatum()));
             this.jLabellaatsteWijzing.setText(dateformat.format(this.geselecteerdeStageplaats.getLaatsteWijziging()));
         }
     }
-    // TODO make inverse method (from refreshDisplayedStageplaats) 
-    // (fields to Stageplaatsobject.
-    
+
+     /**
+     * Store the content of the form controls in the fields of the selected Stageplaats.
+     */
     private void storeDisplayedStageplaats(){
         if (this.geselecteerdeStageplaats == null){
             this.geselecteerdeStageplaats = new Stageplaats();
@@ -730,19 +748,11 @@ public class OverzichtForm extends javax.swing.JFrame {
         this.geselecteerdeStageplaats.setSitueertID((Situeert)this.jComboBoxSitueert.getSelectedItem());
         this.geselecteerdeStageplaats.getSitueertID().setSpecialisatieID((Specialisatie)this.jComboBoxSpecialisatie.getSelectedItem());
             
-//        this.geselecteerdeStageplaats.getBedrijfID().setNaam(this.jTextFieldBedrijfsnaam.getText());
-//        this.geselecteerdeStageplaats.getBedrijfID().setContactNaam(this.jTextFieldContactpersoon.getText());
-//        this.geselecteerdeStageplaats.getBedrijfID().setContactEmail(this.jTextFieldEmail.getText());
-//        this.geselecteerdeStageplaats.getBedrijfID().setActiviteiten(this.jTextAreaActiviteiten.getText());
-//        this.geselecteerdeStageplaats.getBedrijfID().setAanwervend(this.jTextAreaAanwervend.getText());
-//        this.geselecteerdeStageplaats.getBedrijfID().setStraat(this.jTextFieldStraat.getText());
-//        this.geselecteerdeStageplaats.getBedrijfID().setNummer(this.jTextFieldNummer.getText());
-//        this.geselecteerdeStageplaats.getBedrijfID().setPostcode(this.jTextFieldPostcode.getText());
-//        this.geselecteerdeStageplaats.getBedrijfID().setStad(this.jTextFieldStad.getText());
-//        this.geselecteerdeStageplaats.getBedrijfID().setLand(this.jTextFieldLand.getText());
-            
     }
     
+     /**
+     * Displays the Bedrijf of the selected Stageplaats.
+     */
     private void displayBedrijf(){
             if (this.geselecteerdeStageplaats.getBedrijfID() != null){
             this.jTextFieldBedrijfsnaam.setText(this.geselecteerdeStageplaats.getBedrijfID().getNaam());
@@ -762,10 +772,10 @@ public class OverzichtForm extends javax.swing.JFrame {
     
     
     
-    
+    /**
+     * Clears the form controls.
+     */
     private void ClearDisplayedStageplaats(){
-        
-        
         
             this.jLabelID.setText("");
             
@@ -776,12 +786,7 @@ public class OverzichtForm extends javax.swing.JFrame {
             this.jTextAreaBegeleiding.setText("");
             this.jTextAreaVereisteKennis.setText("");
             this.jTextAreaVoorzieningen.setText("");
-  /*          this.jComboBoxSpecialisatie.setSelectedItem("");
-            this.SpecialisatieSitueert = this.dbFacade.getAllSitueertOfSpecialisatieID(1);
-            this.jComboBoxSitueert.setModel(new DefaultComboBoxModel(this.SpecialisatieSitueert.toArray()));
-            
-            this.jComboBoxSitueert.setSelectedIndex(1);
- */           
+
             // Bedrijf
             this.jTextFieldBedrijfsnaam.setText("");
             this.jTextFieldContactpersoon.setText("");
@@ -795,15 +800,13 @@ public class OverzichtForm extends javax.swing.JFrame {
             this.jTextFieldStad.setText("");
             this.jTextFieldLand.setText("");
             
-            
-            
-            
             this.jLabelAanmaakdatum.setText("");
             this.jLabellaatsteWijzing.setText("");
-        
     }
     
-    
+     /**
+     * Enables the buttons when all required data is selected.
+     */
     private void enableButtons(){
         
         if (this.geselecteerdeStageplaats != null && this.geselecteerdeStageplaats.getBedrijfID() != null){

@@ -1,34 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAL;
 
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 /**
- *
+ * Database Access Facade
  * @author patrik
  */
 public class DBFacade {
 
     private final EntityManagerFactory emf;
-  //  private final EntityManager em;
+ 
     
+    /**
+     * Constructor. 
+     */
     public DBFacade() {
         emf = Persistence.createEntityManagerFactory("StageplaatsenAdminPU");
-   //     em = emf.createEntityManager();
     }
     
-    
-    
-    
+    /**
+     * Querries the database for all stageplaatsen.
+     * @return List of all Stageplaatsen
+     */
     public List<Stageplaats> getAllStageplaatsen(){
         EntityManager em = emf.createEntityManager();
         Query AllStageplaatsenQuery = em.createNamedQuery("Stageplaats.findAll");
@@ -37,19 +36,36 @@ public class DBFacade {
         return resultList;
     }
     
-    // Stageplaats.findById
+    
+
+    /**
+     * Querries the database for a stageplaats with the specified ID.
+     * @param id key of the specific stageplaats.
+     * @return the Stageplaats or null if not found.
+     */
     public Stageplaats getStageplaatsByID(int id){
+        Stageplaats s;
         EntityManager em = emf.createEntityManager();
         Query stageplaatsByIDQuery = em.createNamedQuery("Stageplaats.findById");
         stageplaatsByIDQuery.setParameter("id", id);
-        Stageplaats s = (Stageplaats)stageplaatsByIDQuery.getSingleResult();
+        try{
+            s = (Stageplaats)stageplaatsByIDQuery.getSingleResult();
+        }
+        catch(NoResultException ex){
+            s = null;
+        }
         em.close();
         return s;
         
     }
     
     
-    // Specialisatie.findAll
+    
+
+    /**
+     * Querries the database for all Specialisaties
+     * @return List of all Specialisations
+     */
     public List<Specialisatie> getAllSpecialisaties(){
         EntityManager em = emf.createEntityManager();
         Query AllSpecialisatieQuery = em.createNamedQuery("Specialisatie.findAll");
@@ -59,16 +75,30 @@ public class DBFacade {
 
     }
     
+    /**
+     * Querries the database for a Specialisatie with the specified ID.
+     * @param id the ID of the specialisatie
+     * @return the specific specialisatie or null if not found.
+     */
     public Specialisatie getSpecialisatieByID(int id){
+        Specialisatie s;
         EntityManager em = emf.createEntityManager();
         Query SpecialisatieByIDQuery = em.createNamedQuery("Specialisatie.findById");
         SpecialisatieByIDQuery.setParameter("id", id);
-        Specialisatie s = (Specialisatie)SpecialisatieByIDQuery.getSingleResult();
+        try {
+            s = (Specialisatie) SpecialisatieByIDQuery.getSingleResult();
+        } catch (NoResultException ex) {
+            s = null;
+        }
         em.close();
         return s;
         
     }
     
+    /**
+     * Querries the database for all Situeert
+     * @return List of all Situeert.
+     */
     public List<Situeert> getAllSitueert(){
         EntityManager em = emf.createEntityManager();
         Query AllSitueertQuery = em.createNamedQuery("Situeert.findAll");
@@ -78,6 +108,11 @@ public class DBFacade {
 
     }
     
+    /**
+     * Querries the database for all Situeert with the specified SpecialisatieID.
+     * @param id ID of the Specialisatie
+     * @return A list of Situeert with the specified SpecialisatieID.
+     */
     public List<Situeert> getAllSitueertOfSpecialisatieID(int id){
         EntityManager em = emf.createEntityManager();
         Query situeertBySpecialisatieIDQuery = em.createNamedQuery("Situeert.findBySpecialisatieID");
@@ -87,6 +122,12 @@ public class DBFacade {
         return resultList;
     }
     
+    /**
+     * Stores a Stageplaats.
+     * Creates new entry or updates the existing entry.
+     * @param stageplaats The Stageplaats to store.
+     * @return the stored Stageplaats. If it's a new entry, the ID-field has been filled.
+     */
     public Stageplaats persist(Stageplaats stageplaats){
         
         Date now = new Date();
@@ -118,6 +159,12 @@ public class DBFacade {
         return s;
     }
     
+    /**
+     * Stores a Bedrijf.
+     * Creates new entry or updates the existing entry.
+     * @param bedrijf The bedrijf to store
+     * @return the stored Bedrijf. If it's a new entry, the ID-field has been filled.
+     */
     public Bedrijf persist(Bedrijf bedrijf){
         
         Date now = new Date();
@@ -149,37 +196,60 @@ public class DBFacade {
         return b;
     }
     
-    
-    
-    
-    
+    /**
+     * Querries the database for a Bedrijf with the specified ID.
+     * @param id the ID of the Bedrijf
+     * @return the specific Bedrijf or null if not found.
+     */
     public Bedrijf getBedrijfByID(int id){
+        Bedrijf b;
         EntityManager em = emf.createEntityManager();
         Query bedrijfByIDQuery = em.createNamedQuery("Bedrijf.findById");
         bedrijfByIDQuery.setParameter("id", id);
-        Bedrijf b = (Bedrijf)bedrijfByIDQuery.getSingleResult();
+        try
+        {
+            b = (Bedrijf)bedrijfByIDQuery.getSingleResult();
+        } catch (NoResultException ex) {
+            b = null;
+        }
         em.close();
         return b;
-        
     }
     
+    /**
+     * Removes the specified Stageplaats.
+     * @param stageplaats The Stageplaats to remove.
+     */
     public void remove(Stageplaats stageplaats){
         EntityManager em = emf.createEntityManager();
         em.getTransaction( ).begin( );
-        em.remove(em.find(Stageplaats.class, stageplaats.getId()));
+        Stageplaats s = em.find(Stageplaats.class, stageplaats.getId());
+        if ( s != null){
+            em.remove(s);
+        }
         em.getTransaction().commit();
         em.close();
     }
     
+    /**
+     * Removes the specified Bedrijf.
+     * @param bedrijf The Bedrijf to remove.
+     */
     public void remove(Bedrijf bedrijf){
         EntityManager em = emf.createEntityManager();
         em.getTransaction( ).begin( );
-        em.remove(em.find(Bedrijf.class, bedrijf.getId()));
+        Bedrijf b  = em.find(Bedrijf.class, bedrijf.getId());
+        if (b != null){
+            em.remove(b);
+        }
         em.getTransaction().commit();
         em.close();
     }
     
-    
+    /**
+     * Querries the database for all Bedrijven
+     * @return the List of Bedrijven.
+     */
     public List<Bedrijf> getAllBedrijven(){
         EntityManager em = emf.createEntityManager();
         Query AllBedrijvenQuery = em.createNamedQuery("Bedrijf.findAll");

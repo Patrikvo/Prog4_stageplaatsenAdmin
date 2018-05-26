@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package stageplaatsenadmin;
 
 import DAL.Bedrijf;
@@ -12,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
+ * Main form for managing the Bedrijven.
  * @author patrik
  */
 public class BedrijfForm extends javax.swing.JFrame {
@@ -23,11 +18,18 @@ public class BedrijfForm extends javax.swing.JFrame {
     private OverzichtForm parent;
     /**
      * Creates new form BedrijfForm
+     * @param parent refers to the OverzichtsForm.
      */
     public BedrijfForm(OverzichtForm parent) {
         this(parent, new DBFacade());
     }
 
+    /**
+     * Creates new form BedrijfForm
+     * @param parent refers to the OverzichtsForm.
+     * @param dbf A previously created DBFacade.
+     * @see DBFacade
+     */
     public BedrijfForm(OverzichtForm parent, DBFacade dbf) 
     {
         initComponents();
@@ -38,27 +40,21 @@ public class BedrijfForm extends javax.swing.JFrame {
         enableButtons();
     }
     
-    
+     /**
+     * Reloads the list of Bedrijven from the database.
+     * 
+     */
     private void refreshDataCache(){
         this.bedrijven = dbFacade.getAllBedrijven();
     }
     
+     /**
+     * Reloads the combobox of Bedrijven from the lists.
+     */
     private void refreshListbox(){
         int index = this.jListBedrijven.getSelectedIndex();
         
-        this.jListBedrijven.setListData(this.bedrijven.toArray());
-        
-//        if (this.geselecteerdBedrijf != null){
-//            this.jListBedrijven.setSelectedValue(this.geselecteerdBedrijf, true);
-//        }
-//        else
-//        {
-//            if (index > 0) { this.jListBedrijven.setSelectedIndex(index);
-//            }
-//        }
-            
-        
-        
+        this.jListBedrijven.setListData(this.bedrijven.toArray()); 
     }
     
     
@@ -324,8 +320,10 @@ public class BedrijfForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     /**
+     * Deletes the selected Bedrijf.
+     */
     private void jButtonDeleteBedrijfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteBedrijfActionPerformed
-// TODO add your handling code here:
 
         Bedrijf b = (Bedrijf)this.jListBedrijven.getSelectedValue();
         if (b != null){
@@ -341,6 +339,9 @@ public class BedrijfForm extends javax.swing.JFrame {
         parent.reloadDatasources();
     }//GEN-LAST:event_jButtonDeleteBedrijfActionPerformed
 
+     /**
+     * Creates a new Bedrijf, and displays it. Requires to be stored afterwards.
+     */
     private void jButtonNewBedrijfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewBedrijfActionPerformed
 
         this.geselecteerdBedrijf = new Bedrijf();
@@ -364,8 +365,10 @@ public class BedrijfForm extends javax.swing.JFrame {
         parent.reloadDatasources();
     }//GEN-LAST:event_jButtonNewBedrijfActionPerformed
 
+         /**
+     * Stores the displayed Bedrijf in the database.
+     */
     private void jButtonSaveBedrijfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveBedrijfActionPerformed
-        // TODO add your handling code here:
 
         storeDisplayedBedrijf();
         
@@ -377,23 +380,22 @@ public class BedrijfForm extends javax.swing.JFrame {
         this.jListBedrijven.setSelectedValue(this.dbFacade.getBedrijfByID(selectedID), true);
     }//GEN-LAST:event_jButtonSaveBedrijfActionPerformed
 
+     /**
+     * Displays the selected Bedrijf.
+     */
     private void jListBedrijvenValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListBedrijvenValueChanged
-        // TODO add your handling code here:
-        
-        //Bedrijf b 
+
         this.geselecteerdBedrijf = (Bedrijf)this.jListBedrijven.getSelectedValue();
-   /*     if (b != null){ this.geselecteerdBedrijf = b; }
-        else 
-        { 
-            //if (this.jListBedrijven)
-        }*/
+
         ClearDisplayedBedrijf();
         refreshDisplayedBedrijf();
         enableButtons();
     }//GEN-LAST:event_jListBedrijvenValueChanged
 
     
-    
+         /**
+     * Enables the buttons when all required data is selected.
+     */
     private void enableButtons(){
         
         if (this.geselecteerdBedrijf != null){
@@ -447,6 +449,9 @@ public class BedrijfForm extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldStraat;
     // End of variables declaration//GEN-END:variables
 
+     /**
+     * Clears the form controls.
+     */
     private void ClearDisplayedBedrijf() {
             // Bedrijf
             this.jTextFieldBedrijfsnaam.setText("");
@@ -465,12 +470,14 @@ public class BedrijfForm extends javax.swing.JFrame {
             this.jLabellaatsteWijzing.setText("");
     }
 
+     /**
+     * Reloads the displayed Bedrijf.
+     */
     private void refreshDisplayedBedrijf() {
         if (this.geselecteerdBedrijf != null){
             if (this.geselecteerdBedrijf.getId() != null){
                 this.jLabelID.setText(this.geselecteerdBedrijf.getId().toString());
             }
-            
             
             // Bedrijf
             this.jTextFieldBedrijfsnaam.setText(this.geselecteerdBedrijf.getNaam());
@@ -484,25 +491,21 @@ public class BedrijfForm extends javax.swing.JFrame {
             this.jTextFieldPostcode.setText(this.geselecteerdBedrijf.getPostcode());
             this.jTextFieldStad.setText(this.geselecteerdBedrijf.getStad());
             this.jTextFieldLand.setText(this.geselecteerdBedrijf.getLand());
-            
-            
-            
+
             SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy '-' HH:mm:ss");
             this.jLabelAanmaakdatum.setText(dateformat.format(this.geselecteerdBedrijf.getAanmaakDatum()));
             this.jLabellaatsteWijzing.setText(dateformat.format(this.geselecteerdBedrijf.getLaatsteWijziging()));
-            
-            
-            
         }
     }
     
-    
+     /**
+     * Store the content of the form controls in the fields of the selected Bedrijf.
+     */
     private void storeDisplayedBedrijf(){
         if (this.geselecteerdBedrijf == null){
             this.geselecteerdBedrijf = new Bedrijf();
         }
-        
-            
+         
         this.geselecteerdBedrijf.setNaam(this.jTextFieldBedrijfsnaam.getText());
         this.geselecteerdBedrijf.setContactNaam(this.jTextFieldContactpersoon.getText());
         this.geselecteerdBedrijf.setContactEmail(this.jTextFieldEmail.getText());
@@ -513,7 +516,6 @@ public class BedrijfForm extends javax.swing.JFrame {
         this.geselecteerdBedrijf.setPostcode(this.jTextFieldPostcode.getText());
         this.geselecteerdBedrijf.setStad(this.jTextFieldStad.getText());
         this.geselecteerdBedrijf.setLand(this.jTextFieldLand.getText());
-            
     }
     
     

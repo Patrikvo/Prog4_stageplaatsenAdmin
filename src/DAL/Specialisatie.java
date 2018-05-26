@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * JPA Enity class Specialisatie
  * @author patrik
  */
 @Entity
@@ -41,42 +41,47 @@ public class Specialisatie implements Serializable {
    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "specialisatieID", fetch = FetchType.EAGER)
    // private List<Situeert> situeertList;
 
+    /**
+     * Constructor
+     */
     public Specialisatie() {
     }
 
-    public Specialisatie(Integer id) {
-        this.id = id;
-    }
+ 
 
-    public Specialisatie(Integer id, String beschrijving) {
-        this.id = id;
-        this.beschrijving = beschrijving;
-    }
-
+    /**
+     * JPA Column Getter/Setter for the field ID
+     * @return The field ID
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     * JPA Column Getter/Setter for the field ID
+     * @param id new value for the field ID
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     * JPA Column Getter/Setter for the field beschrijving
+     * @return The string beschrijving
+     */
     public String getBeschrijving() {
         return beschrijving;
     }
 
+    /**
+     * JPA Column Getter/Setter for the field beschrijving
+     * @param beschrijving new string for the field beschrijving
+     */
     public void setBeschrijving(String beschrijving) {
         this.beschrijving = beschrijving;
     }
 
-   // @XmlTransient
-  //  public List<Situeert> getSitueertList() {
-  //      return situeertList;
-  //  }
-
-  //  public void setSitueertList(List<Situeert> situeertList) {
-  //      this.situeertList = situeertList;
-  ///  }
+  
 
     @Override
     public int hashCode() {
