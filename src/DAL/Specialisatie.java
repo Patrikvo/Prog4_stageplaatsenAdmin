@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAL;
 
 import java.io.Serializable;
@@ -29,15 +24,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Specialisatie implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    /*
+        JPA: Columns
+    */
+    
     @Id
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
+    
     @Basic(optional = false)
     @Column(name = "Beschrijving")
     private String beschrijving;
     
-    // removed the folling as this causes an circular dependency and led to astackoverflowerror.
+   // removed the folling as this causes an circular dependency and led to astackoverflowerror.
    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "specialisatieID", fetch = FetchType.EAGER)
    // private List<Situeert> situeertList;
 
@@ -50,7 +51,7 @@ public class Specialisatie implements Serializable {
  
 
     /**
-     * JPA Column Getter/Setter for the field ID
+     * JPA Column Getter for the field ID
      * @return The field ID
      */
     public Integer getId() {
@@ -58,7 +59,7 @@ public class Specialisatie implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field ID
+     * JPA Column Setter for the field ID
      * @param id new value for the field ID
      */
     public void setId(Integer id) {
@@ -66,7 +67,7 @@ public class Specialisatie implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field beschrijving
+     * JPA Column Getter for the field beschrijving
      * @return The string beschrijving
      */
     public String getBeschrijving() {
@@ -74,14 +75,17 @@ public class Specialisatie implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field beschrijving
+     * JPA Column Setter for the field beschrijving
      * @param beschrijving new string for the field beschrijving
      */
     public void setBeschrijving(String beschrijving) {
         this.beschrijving = beschrijving;
     }
 
-  
+    
+    /*
+        Supporting methodes
+    */
 
     @Override
     public int hashCode() {

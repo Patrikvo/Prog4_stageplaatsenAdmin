@@ -104,7 +104,6 @@ public class Bedrijf implements Serializable {
      *  Constructor
      */
     public Bedrijf() { 
-      //  this(null);
         this.id = null;
     }
  
@@ -134,7 +133,7 @@ public class Bedrijf implements Serializable {
     */
 
     /**
-     * JPA Column Getter/Setter for the field ID
+     * JPA Column Getter for the field ID
      * @return The field ID
      */
     public Integer getId() {
@@ -142,7 +141,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field ID
+     * JPA Column Setter for the field ID
      * @param id new value for the field ID
      */
     public void setId(Integer id) {
@@ -150,7 +149,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field naam
+     * JPA Column Getter for the field naam
      * @return The string naam
      */
     public String getNaam() {
@@ -158,7 +157,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field naam
+     * JPA Column Setter for the field naam
      * @param naam new string for the field naam
      */
     public void setNaam(String naam) {
@@ -166,7 +165,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field contactNaam.
+     * JPA Column Getter for the field contactNaam.
      * @return The string contactNaam
      */
     public String getContactNaam() {
@@ -174,7 +173,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field contactNaam
+     * JPA Column Setter for the field contactNaam
      * @param contactNaam new string for the field contactNaam
      */
     public void setContactNaam(String contactNaam) {
@@ -182,7 +181,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field contactEmail.
+     * JPA Column Getter for the field contactEmail.
      * @return The string contactEmail
      */
     public String getContactEmail() {
@@ -190,7 +189,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field contactEmail
+     * JPA Column Setter for the field contactEmail
      * @param contactEmail new string for the field contactEmail
      */
     public void setContactEmail(String contactEmail) {
@@ -198,7 +197,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field activiteiten.
+     * JPA Column Getter for the field activiteiten.
      * @return The string activiteiten
      */
     public String getActiviteiten() {
@@ -206,7 +205,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field activiteiten
+     * JPA Column Setter for the field activiteiten
      * @param activiteiten new string for the field activiteiten
      */
     public void setActiviteiten(String activiteiten) {
@@ -214,7 +213,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field aanwervend.
+     * JPA Column Getter for the field aanwervend.
      * @return The string aanwervend
      */
     public String getAanwervend() {
@@ -222,7 +221,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field aanwervend
+     * JPA Column Setter for the field aanwervend
      * @param aanwervend new string for the field aanwervend
      */
     public void setAanwervend(String aanwervend) {
@@ -230,7 +229,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field aanmaakDatum.
+     * JPA Column Getter for the field aanmaakDatum.
      * This is the date when this entity was created.
      * @return The Date aanmaakDatum.
      */
@@ -239,7 +238,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field aanmaakDatum
+     * JPA Column Setter for the field aanmaakDatum
      * This is the date when this entity was created.
      * @param aanmaakDatum new Date for the field aanmaakDatum
      */
@@ -248,7 +247,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field laatsteWijziging.
+     * JPA Column Getter for the field laatsteWijziging.
      * This is the date when this entity was last changed.
      * @return The Date laatsteWijziging.
      */
@@ -257,7 +256,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field laatsteWijziging
+     * JPA Column Setter for the field laatsteWijziging
      * This is the date when this entity last modified.
      * @param laatsteWijziging new Date for the field laatsteWijziging
      */
@@ -266,7 +265,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field stageplaatsList.
+     * JPA Column Getter for the field stageplaatsList.
      * These are all stageplaatsen from this Bedrijf.
      * @return The List stageplaatsList
      */
@@ -276,7 +275,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field stageplaatsList
+     * JPA Column Setter for the field stageplaatsList
      * These are all stageplaatsen from this Bedrijf.
      * @param stageplaatsList new List stageplaatsList
      */
@@ -285,7 +284,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field straat.
+     * JPA Column Getter for the field straat.
      * @return The string straat
      */
     public String getStraat() {
@@ -293,7 +292,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field straat
+     * JPA Column Setter for the field straat
      * @param straat new string for the field straat
      */
     public void setStraat(String straat) {
@@ -301,7 +300,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field nummer.
+     * JPA Column Getter for the field nummer.
      * @return The string nummer
      */
     public String getNummer() {
@@ -309,7 +308,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field nummer
+     * JPA Column Setter for the field nummer
      * @param nummer new string for the field nummer
      */
     public void setNummer(String nummer) {
@@ -317,7 +316,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field stad.
+     * JPA Column Getter for the field stad.
      * @return The string stad
      */
     public String getStad() {
@@ -325,7 +324,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field stad
+     * JPA Column Setter for the field stad
      * @param stad new string for the field stad
      */
     public void setStad(String stad) {
@@ -333,7 +332,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field postcode.
+     * JPA Column Getter for the field postcode.
      * This is a string as only Belgian postal codes are completly numeric.
      * @return The string postcode
      */
@@ -342,7 +341,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field postcode
+     * JPA Column Setter for the field postcode
      * This is a string as only Belgian postal codes are completly numeric.
      * @param postcode new string for the field postcode
      */
@@ -351,7 +350,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field land.
+     * JPA Column Getter for the field land.
      * @return The string land
      */
     public String getLand() {
@@ -359,7 +358,7 @@ public class Bedrijf implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field land
+     * JPA Column Setter for the field land
      * @param land new string for the field land
      */
     public void setLand(String land) {

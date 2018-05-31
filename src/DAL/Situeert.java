@@ -42,11 +42,14 @@ public class Situeert implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
+    
     @Basic(optional = false)
     @Column(name = "Beschrijving")
     private String beschrijving;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "situeertID", fetch = FetchType.EAGER)
     private List<Stageplaats> stageplaatsList;
+    
     @JoinColumn(name = "SpecialisatieID", referencedColumnName = "ID")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Specialisatie specialisatieID;
@@ -60,7 +63,7 @@ public class Situeert implements Serializable {
 
 
     /**
-     * JPA Column Getter/Setter for the field ID
+     * JPA Column Getter for the field ID
      * @return The field ID
      */
     public Integer getId() {
@@ -68,7 +71,7 @@ public class Situeert implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field ID
+     * JPA Column Setter for the field ID
      * @param id new value for the field ID
      */
     public void setId(Integer id) {
@@ -76,7 +79,7 @@ public class Situeert implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field beschrijving
+     * JPA Column Getter for the field beschrijving
      * @return The string beschrijving
      */
     public String getBeschrijving() {
@@ -84,7 +87,7 @@ public class Situeert implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field beschrijving
+     * JPA Column Setter for the field beschrijving
      * @param beschrijving new string for the field beschrijving
      */
     public void setBeschrijving(String beschrijving) {
@@ -92,7 +95,7 @@ public class Situeert implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field stageplaatsList.
+     * JPA Column Getter for the field stageplaatsList.
      * These are all stageplaatsen from this Situeert.
      * @return The List stageplaatsList
      */
@@ -102,7 +105,7 @@ public class Situeert implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field stageplaatsList
+     * JPA Column Setter for the field stageplaatsList
      * These are all stageplaatsen from this Situeert.
      * @param stageplaatsList new List stageplaatsList
      */
@@ -111,7 +114,7 @@ public class Situeert implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field specialisatieID.
+     * JPA Column Getter for the field specialisatieID.
      * This is the Specialisatie relevant to this Situeert.
      * @return The Specialisatie specialisatieID
      */
@@ -120,7 +123,7 @@ public class Situeert implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field specialisatieID
+     * JPA Column Setter for the field specialisatieID
      * This is the Specialisatie relevant to this Situeert.
      * @param specialisatieID new Specialisatie
      */
@@ -128,6 +131,11 @@ public class Situeert implements Serializable {
         this.specialisatieID = specialisatieID;
     }
 
+    
+    /*
+        Supporting methodes
+    */
+    
     @Override
     public int hashCode() {
         int hash = 0;

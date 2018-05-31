@@ -56,29 +56,39 @@ public class Stageplaats implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
+    
     @Basic(optional = false)
     @Column(name = "Titel")
     private String titel;
+    
     @Column(name = "Omschrijving")
     private String omschrijving;
+    
     @Column(name = "AantalPlaatsen")
     private Integer aantalPlaatsen;
+    
     @Column(name = "Periode")
     private String periode;
+    
     @Column(name = "Begeleiding")
     private String begeleiding;
+    
     @Column(name = "ExtraKennisVereist")
     private String extraKennisVereist;
+    
     @Column(name = "Voorzieningen")
     private String voorzieningen;
+    
     @Basic(optional = false)
     @Column(name = "AanmaakDatum")
     @Temporal(TemporalType.DATE)
     private Date aanmaakDatum;
+    
     @Basic(optional = false)
     @Column(name = "LaatsteWijziging")
     @Temporal(TemporalType.DATE)
     private Date laatsteWijziging;
+    
     @JoinColumn(name = "SitueertID", referencedColumnName = "ID")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Situeert situeertID;
@@ -86,6 +96,7 @@ public class Stageplaats implements Serializable {
     @JoinColumn(name = "BedrijfID", referencedColumnName = "ID")
     @ManyToOne(optional = true)
     //@ManyToOne(cascade = CascadeType.PERSIST, optional = true, fetch = FetchType.EAGER)
+    
     private Bedrijf bedrijfID;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "stageplaats", fetch = FetchType.EAGER)
@@ -128,7 +139,7 @@ public class Stageplaats implements Serializable {
     
     
     /**
-     * JPA Column Getter/Setter for the field ID
+     * JPA Column Getter for the field ID
      * @return The field ID
      */
     public Integer getId() {
@@ -136,7 +147,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field ID
+     * JPA Column Setter for the field ID
      * @param id new value for the field ID
      */
     public void setId(Integer id) {
@@ -144,7 +155,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the string titel
+     * JPA Column Getter for the string titel
      * @return The string titel
      */
     public String getTitel() {
@@ -152,7 +163,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the string titel
+     * JPA Column Setter for the string titel
      * @param titel new string for the field titel
      */
     public void setTitel(String titel) {
@@ -160,7 +171,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the string omschrijving
+     * JPA Column Getter for the string omschrijving
      * @return The string omschrijving
      */
     public String getOmschrijving() {
@@ -168,7 +179,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the string omschrijving
+     * JPA Column Setter for the string omschrijving
      * @param omschrijving new string for the field omschrijving
      */
     public void setOmschrijving(String omschrijving) {
@@ -176,7 +187,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field aantalPlaatsen
+     * JPA Column Getter for the field aantalPlaatsen
      * @return The integer aantalPlaatsen
      */
     public Integer getAantalPlaatsen() {
@@ -184,7 +195,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the integer aantalPlaatsen
+     * JPA Column Setter for the integer aantalPlaatsen
      * @param aantalPlaatsen new integer for the field aantalPlaatsen
      */
     public void setAantalPlaatsen(Integer aantalPlaatsen) {
@@ -192,7 +203,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the string periode
+     * JPA Column Getter for the string periode
      * @return The string periode
      */
     public String getPeriode() {
@@ -200,7 +211,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the string periode
+     * JPA Column Setter for the string periode
      * @param periode new string for the field periode
      */
     public void setPeriode(String periode) {
@@ -208,7 +219,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the string begeleiding
+     * JPA Column Getter for the string begeleiding
      * @return The string begeleiding
      */
     public String getBegeleiding() {
@@ -216,7 +227,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the string begeleiding
+     * JPA Column Setter for the string begeleiding
      * @param begeleiding new string for the field begeleiding
      */
     public void setBegeleiding(String begeleiding) {
@@ -224,7 +235,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the string extraKennisVereist
+     * JPA Column Getter for the string extraKennisVereist
      * @return The string extraKennisVereist
      */
     public String getExtraKennisVereist() {
@@ -232,7 +243,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the string extraKennisVereist
+     * JPA Column Setter for the string extraKennisVereist
      * @param extraKennisVereist new string for the field extraKennisVereist
      */
     public void setExtraKennisVereist(String extraKennisVereist) {
@@ -240,7 +251,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the string voorzieningen
+     * JPA Column Getter for the string voorzieningen
      * @return The string voorzieningen
      */
     public String getVoorzieningen() {
@@ -248,7 +259,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the string voorzieningen
+     * JPA Column Setter for the string voorzieningen
      * @param voorzieningen new string for the field voorzieningen
      */
     public void setVoorzieningen(String voorzieningen) {
@@ -256,7 +267,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field aanmaakDatum.
+     * JPA Column Getter for the field aanmaakDatum.
      * This is the date when this entity was created.
      * @return The Date aanmaakDatum.
      */
@@ -265,7 +276,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field aanmaakDatum
+     * JPA Column Setter for the field aanmaakDatum
      * This is the date when this entity was created.
      * @param aanmaakDatum new Date for the field aanmaakDatum
      */
@@ -274,7 +285,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field laatsteWijziging.
+     * JPA Column Getter for the field laatsteWijziging.
      * This is the date when this entity was last changed.
      * @return The Date laatsteWijziging.
      */
@@ -283,7 +294,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field laatsteWijziging
+     * JPA Column Setter for the field laatsteWijziging
      * This is the date when this entity last modified.
      * @param laatsteWijziging new Date for the field laatsteWijziging
      */
@@ -292,7 +303,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the Situeert situeertID
+     * JPA Column Getter for the Situeert situeertID
      * Situeert classifies the stageplaats along the Specialisatie's.
      * @return The Situeert situeertID
      */
@@ -301,7 +312,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the Situeert situeertID
+     * JPA Column Setter for the Situeert situeertID
      * Situeert classifies the stageplaats along the Specialisatie's.
      * @param situeertID new Situeert for the field situeertID
      */
@@ -310,7 +321,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the Bedrijf bedrijfID
+     * JPA Column Getter for the Bedrijf bedrijfID
      * Specifies which Bedrijf is providing the Stageplaats.
      * @return The Bedrijf bedrijfID
      */
@@ -319,7 +330,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the Bedrijf bedrijfID
+     * JPA Column Setter for the Bedrijf bedrijfID
      * Specifies which Bedrijf is providing the Stageplaats.
      * @param bedrijfID new Bedrijf for the field bedrijfID
      */
@@ -328,7 +339,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field stageplaatsList.
+     * JPA Column Getter for the field stageplaatsList.
      * These are all the stageplaatsen.
      * @return The List stageplaatsList
      */
@@ -338,7 +349,7 @@ public class Stageplaats implements Serializable {
     }
 
     /**
-     * JPA Column Getter/Setter for the field stageplaatsList
+     * JPA Column Setter for the field stageplaatsList
      * These are all the stageplaatsen.
      * @param studentStageplaatsList new List stageplaatsList
      */
@@ -347,7 +358,7 @@ public class Stageplaats implements Serializable {
     }
 
     
-        /*
+    /*
         Supporting methodes
     */
     
